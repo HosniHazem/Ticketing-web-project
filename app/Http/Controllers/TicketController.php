@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ticket;
-use App\Models\article;
 use Illuminate\Http\Request;
-
+use App\Models\Ticket;
 class TicketController extends Controller
 {
     public function show($id)
@@ -21,21 +19,14 @@ class TicketController extends Controller
     return response()->json(['message'=>'not found'], 404);
     }
     }
+
     public function index()
-    {
-
-        $item =article::all();
-
-        return response()->json(['Item'=>$item], 200);
-    }
-
-    /*public function index()
     {
 
         $item =Ticket::all();
 
         return response()->json(['Item'=>$item], 200);
-    }*/
+    }
 
     public function store(Request $req)
     {
