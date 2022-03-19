@@ -32,6 +32,9 @@ class TicketController extends Controller
     {
 
         $item =new Ticket();
+        $item4 =new TicketAttachments();
+        $item4->filesize=$req->filesize;
+        $item4->id=$item->id;
         $item->D=$req->DisplayTicketID;
         $item->Subject=$req->Subject;
         $item->Description=$req->Description;
