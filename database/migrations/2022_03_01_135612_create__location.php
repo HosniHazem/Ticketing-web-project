@@ -15,12 +15,11 @@ class CreateLocation extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->boolean('is_active');
-            $table->boolean('is_default');
-            $table->boolean('is_client_visible');
-            $table->datetime('created_date');
+            $table->string('name')->nullable;
+            $table->string('description')->nullable;
+            $table->boolean('is_active')->nullable;
+            $table->boolean('is_default')->nullable;
+            $table->boolean('is_client_visible')->nullable;
             $table->timestamps();
         });
     }

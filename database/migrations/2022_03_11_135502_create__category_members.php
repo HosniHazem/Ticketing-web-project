@@ -17,7 +17,7 @@ class CreateCategoryMembers extends Migration
             $table->increments('id');
             $table->integer('Category_id')->unsigned();
             $table->foreign('Category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable;
             $table->string('category_name');
             $table->timestamps();
         });

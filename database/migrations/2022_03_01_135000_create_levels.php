@@ -16,10 +16,10 @@ class CreateLevels extends Migration
         Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name");
-            $table->string("description");
-            $table->boolean("Is_Active");
-            $table->boolean("Is_Defaults");
-            $table->datetime("created_date");
+            $table->string("description")->nullable;
+            $table->boolean("Is_Active")->nullable;
+            $table->boolean("Is_Defaults")->nullable;
+            $table->datetime("created_date")->nullable;
             $table->timestamps();
         });
     }
