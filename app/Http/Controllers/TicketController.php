@@ -32,37 +32,38 @@ class TicketController extends Controller
     {
 
         $item =new Ticket();
+        $item->D=$req->DisplayTicketID;
         $item->Subject=$req->Subject;
         $item->Description=$req->Description;
         $item->EstimatedTime=$req->EstimatedTime;
         $item->DueDate=$req->DueDate;
         $item->SolutionDescription=$req->SolutionDescription;
-
+        
         $item2 =new TicketAttachements();
         $item2->file_size=$req->file_size;
         $item2->TicketId=$item->id;
 
         $item3 =new Levels();
         $item->LevelID=$item3->id;
-        $item3->name=$req->name;
+        $item3->name=$req->namelevel;
 
 
         $item4 =new Impacts();
         $item->ImpactID=$item4->id;
-        $item4->name=$req->name;
+        $item4->name=$req->nameimpact;
 
         $item5 =new Urgency();
         $item->UrgentID=$item5->id;
-        $item5->name=$req->name;
+        $item5->name=$req->nameurgency;
 
 
         $item6 =new Priority();
         $item->PriorityID=$item6->id;
-        $item6->name=$req->name;
-
+        $item6->name=$req->namepriority;
+        
         $item7 =new Request_type();
         $item->RequestTypeID=$item7->id;
-        $item7->name=$req->name;
+        $item7->name=$req->namerequesttype;
 
         /*$item8 =new User();
         $item8->id=$req->CreatedUser;
@@ -72,36 +73,36 @@ class TicketController extends Controller
 
         $item9 =new Comments();
         $item9->id=$item->CommentId;
-
+        
         $item10 =new TicketModels();
         $item->TicketModeID=$item10->id;
-        $item10->name=$req->name;
-
-
+        $item10->name=$req->nametticketmodel;
+        
+        
         $item11 =new Category();
         $item->CategoryID=$item11->id;
-        $item11->name=$req->name;
-
+        $item11->name=$req->namecategory;
+        
         $item12 =new SubCategory();
         $item->SubCategoryID=$item12->id;
         $item12->CategoryID=$item11->id;
-
+        
         $item13 =new Departments();
         $item->DepartmentID=$item13->id;
-        $item13->name=$req->name;
-
+        $item13->name=$req->namedepartement;
+        
         $item14 =new Items();
         $item->ItemID=$item14->id;
         $item14->SubCategoryID=$item12->id;
-
+        
         $item15 =new Status();
         $item->StatusID=$item15->id;
-        $item15->name=$req->name;
+        $item15->name=$req->namestatu;
 
-
+        
         $item16 =new Locations();
         $item->LocationID=$item16->id;
-
+        
         $item17 =new TicketCloseModel();
         $item->TicketCloseModelID=$item17->id;
 
