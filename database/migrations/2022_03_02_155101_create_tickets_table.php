@@ -15,7 +15,7 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('DisplayTicketID');
+            $table->integer('DisplayTicketID')->nullable;
             $table->String('Subject');
             $table->String('Description');
             $table->integer('RequestTypeID')->unsigned();
@@ -42,26 +42,24 @@ class CreateTicketsTable extends Migration
             $table->foreign('LocationID')->references('id')->on('locations')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('TicketModeID')->unsigned();
             $table->foreign('TicketModeID')->references('id')->on('ticket_models')->onDelete('cascade')->onUpdate('cascade');
-            $table->String("CreatedUser");
-            $table->String("UpdatedUser");
-            $table->datetime("CreatedDate");
-            $table->datetime("UpdatedDate");
-            $table->String("RequestedUser");
-            $table->String("AssignedUser");
-            $table->datetime("AssignedDate");
+            $table->String("CreatedUser")->nullable;
+            $table->String("UpdatedUser")->nullable;
+            $table->String("RequestedUser")->nullable;
+            $table->String("AssignedUser")->nullable;
+            $table->datetime("AssignedDate")->nullable;
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
-            $table->integer("IPAddress");
-            $table->datetime("ClosedDate");
+            $table->integer("IPAddress")->nullable;
+            $table->datetime("ClosedDate")->nullable;
             $table->integer('TicketCloseModelID')->unsigned();
             $table->foreign('TicketCloseModelID')->references('id')->on('ticket_close_models')->onDelete('cascade')->onUpdate('cascade');
             $table->String("StatusCloseReason");
-            $table->boolean("Is_FCR");
-            $table->boolean("Is_Active");
-            $table->String("TicketStatusMessage");
+            $table->boolean("Is_FCR")->nullable;
+            $table->boolean("Is_Active")->nullable;
+            $table->String("TicketStatusMessage")->nullable;
             $table->datetime("EstimatedTime");
-            $table->datetime("SpentTime");
-            $table->boolean("Is_Validate_EstimatedTime");
+            $table->datetime("SpentTime")->nullable;
+            $table->boolean("Is_Validate_EstimatedTime")->nullable;
             $table->timestamps();
         });
     }

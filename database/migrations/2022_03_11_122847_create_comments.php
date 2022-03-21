@@ -15,8 +15,8 @@ class CreateComments extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('CommentId');
-            $table->integer("AuthorId");
-            $table->integer("ParentCommentId");
+            $table->integer("AuthorId")->nullable;
+            $table->integer("ParentCommentId")->nullable;
             $table->integer('TicketId')->unsigned();
             $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');
             $table->string("Boby")->nullable;

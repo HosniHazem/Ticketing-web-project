@@ -15,7 +15,7 @@ class CreateStatus extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->nullable;
+            $table->string('name');
             $table->string('description')->nullable;
             $table->boolean('is_closed')->nullable;
             $table->boolean('is_active')->nullable;

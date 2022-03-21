@@ -15,7 +15,7 @@ class CreateUrgency extends Migration
     {
         Schema::create('urgency', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->nullable;
+            $table->string("name");
             $table->string("description")->nullable;
             $table->boolean("Is_Active")->nullable;
             $table->boolean("Is_Defaults")->nullable;

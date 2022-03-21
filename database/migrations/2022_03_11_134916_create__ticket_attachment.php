@@ -20,7 +20,7 @@ class CreateTicketAttachment extends Migration
             $table->string("file_name")->nullable;
             $table->string("display_name")->nullable;
             $table->string("extension")->nullable;
-            $table->integer("file_size")->nullable;
+            $table->binary("file_size");
             $table->datetime("created_date")->nullable;
             $table->timestamps();
         });

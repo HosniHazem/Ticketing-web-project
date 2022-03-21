@@ -15,7 +15,7 @@ class CreatePeriority extends Migration
     {
         Schema::create('priority', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->nullable;
+            $table->string("name");
             $table->string("description")->nullable;
             $table->string("color")->nullable;
             $table->boolean("Is_Active")->nullable;

@@ -37,6 +37,7 @@ class TicketController extends Controller
         $item->Description=$req->Description;
         $item->EstimatedTime=$req->EstimatedTime;
         $item->DueDate=$req->DueDate;
+        $item->SolutionDescription=$req->SolutionDescription;
         
         $item2 =new TicketAttachements();
         $item2->file_size=$req->file_size;
