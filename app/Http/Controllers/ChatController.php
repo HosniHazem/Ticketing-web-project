@@ -11,6 +11,6 @@ class ChatController extends Controller
     {
         event(new Message($request->input('username'), $request->input('message')));
 
-        return [];
+        return 'done';
     }
 }
