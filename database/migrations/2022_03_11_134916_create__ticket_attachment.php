@@ -17,11 +17,11 @@ class CreateTicketAttachment extends Migration
             $table->increments('id');
             $table->integer('TicketId')->unsigned();
             $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');
-            $table->string("file_name");
-            $table->string("display_name");
-            $table->string("extension");
-            $table->integer("file_size");
-            $table->datetime("created_date");
+            $table->string("file_name")->nullable;
+            $table->string("display_name")->nullable;
+            $table->string("extension")->nullable;
+            $table->integer("file_size")->nullable;
+            $table->datetime("created_date")->nullable;
             $table->timestamps();
         });
     }
