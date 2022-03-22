@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     use HasFactory;
+    protected  $table='status';
     public function tickets()
     {
         return $this->hasMany('App\Ticket');

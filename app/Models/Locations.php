@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Locations extends Model
 {
     use HasFactory;
+    protected  $table='locations';
     public function tickets()
     {
         return $this->hasMany('App\Ticket');

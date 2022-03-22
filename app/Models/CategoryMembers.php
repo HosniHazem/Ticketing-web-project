@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryMembers extends Model
 {
     use HasFactory;
+    protected  $table='category_members';
     public function category()
     {
         return $this->hasOne('App\Category');

@@ -9,7 +9,9 @@ class Ticket extends Model
 {
     use HasFactory;
     protected  $table='tickets';
-    protected  $fillable=['DisplayTicketID','Subject','Description'];
+    protected  $fillable=['DisplayTicketID','Subject','Description','ImpactID'];
+
+
     /*'RequestTypeID','StatusID','PriorityID','UrgentID','CategoryID','SubCategoryID','ItemID','ImpactID','DepartmentID','LevelID','LocationID','TicketModeID','CreatedUser','UpdatedUser','CreatedDate','UpdatedDate','RequestedUser','AssignedUser','AssignedDate','DueDate','SolutionDescription','IPAddress','ClosedDate','TicketCloseModelID','StatusCloseReason','Is_FCR','Is_Active','TicketStatusMessage','EstimatedTime','SpentTime','Is_Validate_EstimatedTime'*/
     public function comments()
     {
@@ -47,14 +49,14 @@ class Ticket extends Model
     {
         return $this->belongsTo('App\Category');
     }
-    public function sub_category() //*
+   /* public function sub_category() //*
     {
         return $this->belongsTo('App\SubCategory');
-    }
-    public function items() //*
+    }*/
+    /*public function items() //*
     {
         return $this->belongsTo('App\Items');
-    }
+    }*/
     public function status() //*
     {
         return $this->belongsTo('App\Status');

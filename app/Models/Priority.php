@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Priority extends Model
 {
     use HasFactory;
+    protected  $table='priority';
     public function tickets()
     {
         return $this->hasMany('App\Ticket');

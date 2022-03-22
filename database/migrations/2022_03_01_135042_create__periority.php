@@ -16,12 +16,12 @@ class CreatePeriority extends Migration
         Schema::create('priority', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name");
-            $table->string("description")->nullable;
-            $table->string("color")->nullable;
-            $table->boolean("Is_Active")->nullable;
-            $table->boolean("Is_Defaults")->nullable;
-            $table->boolean("Is_client_visible")->nullable;
-            $table->datetime("created_date")->nullable;
+            $table->string("description")->nullable();
+            $table->string("color")->nullable();
+            $table->boolean("Is_Active")->nullable();
+            $table->boolean("Is_Defaults")->nullable();
+            $table->boolean("Is_client_visible")->nullable();
+            $table->datetime("created_date")->nullable();
             $table->timestamps();
         });
     }
