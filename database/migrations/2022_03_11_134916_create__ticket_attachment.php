@@ -15,13 +15,13 @@ class CreateTicketAttachment extends Migration
     {
         Schema::create('ticket_attachments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('TicketId')->unsigned()->nullable();
-            $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->string("file_name")->nullable();
-            $table->string("display_name")->nullable();
-            $table->string("extension")->nullable();
+            $table->integer('TicketId')->unsigned();
+            $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');
+            $table->string("file_name");
+            $table->string("display_name");
+            $table->string("extension");
             $table->binary("file_size");
-            $table->datetime("created_date")->nullable();
+            $table->datetime("created_date");
             $table->timestamps();
         });
     }
