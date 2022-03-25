@@ -15,14 +15,14 @@ class CreateSubCategory extends Migration
     {
         Schema::create('sub_category', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
-            $table->boolean('is_active')->nullable();
-            $table->boolean('is_default')->nullable();
-            $table->boolean('is_client_visible')->nullable();
-            $table->integer('external_code')->nullable();
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('is_active');
+            $table->boolean('is_default');
+            $table->boolean('is_client_visible');
+            $table->integer('external_code');
             $table->timestamps();
         });
     }

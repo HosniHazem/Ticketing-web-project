@@ -15,10 +15,10 @@ class CreateTicketCloseModel extends Migration
     {
         Schema::create('ticket_close_models', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
-            $table->boolean('is_active')->nullable();
-            $table->boolean('is_default')->nullable();
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('is_active');
+            $table->boolean('is_default');
             $table->timestamps();
 
         });
