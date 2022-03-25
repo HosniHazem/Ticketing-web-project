@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('role_id')->nullable()->unsigned();
-            $table->foreign('role_id')->nullable()->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('role_id')->nullable()->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string('display_name');
             $table->string('user_name');;
             $table->integer('phone_no');

@@ -33,7 +33,7 @@ class UserController extends Controller
     public function store(Request $req)
     {
         $item =new User();
-        $item->RoleID=$req->RoleID; //-
+        //$item->RoleID=$req->RoleID; 
         $item->DisplayName=$req->DisplayName;
         $item->UserName=$req->UserName;
         $item->Password=$req->Password;
@@ -63,11 +63,28 @@ class UserController extends Controller
         $item =User::find($id);
 
         if($item){
-            $item->name=$req->name;
-            $item->description=$req->description;
-            $item->is_active=$req->is_active;
-            $item->is_Defaults=$req->is_Defaults;
-            $item->is_client_visible=$req->is_client_visible;
+            //$item->RoleID=$req->RoleID; 
+            $item->DisplayName=$req->DisplayName;
+            $item->UserName=$req->UserName;
+            $item->Password=$req->Password;
+            $item->Email=$req->Email;
+            $item->PhoneNo=$req->PhoneNo;
+            $item->CellPhoneNo=$req->CellPhoneNo;
+            $item->City=$req->City;
+            $item->State=$req->State;
+            $item->Country=$req->Country;
+            $item->Pincode=$req->Pincode;
+            $item->JobTitle=$req->JobTitle;
+            $item->Address=$req->Address;
+            $item->TimeZoneID=$req->TimeZoneID;
+            $item->Organization=$req->Organization;
+            $item->Is_SendMail_Password=$req->Is_SendMail_Password;
+            $item->Description=$req->Description;
+            $item->ProfilePicture=$req->ProfilePicture;
+            $item->Is_Active=$req->Is_Active;
+            $item->CreatedDate=$req->CreatedDate;
+            $item->ExternalCode=$req->ExternalCode;
+            $item->Companyld=$req->Companyld;
             $item->update();
         return response()->json(['message'=>'done'], 200);
                 }
