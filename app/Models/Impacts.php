@@ -9,6 +9,7 @@ class Impacts extends Model
 {
     use HasFactory;
     protected  $table='impacts';
+    protected  $fillable=['name','description','Is_Active','Is_Defaults','Is_client_visible'];
     public function tickets()
     {
         return $this->hasMany('App\Ticket');

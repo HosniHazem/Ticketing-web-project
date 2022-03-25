@@ -16,11 +16,11 @@ class CreateStatus extends Migration
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->boolean('is_closed')->nullable();
-            $table->boolean('is_active')->nullable();
-            $table->boolean('is_default')->nullable();
-            $table->boolean('is_client_visible')->nullable();
+            $table->string('description');
+            $table->boolean('is_closed');
+            $table->boolean('is_active');
+            $table->boolean('is_default');
+            $table->boolean('is_client_visible');
             $table->timestamps();
         });
     }
