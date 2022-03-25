@@ -16,11 +16,11 @@ class CreateCategory extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->boolean('is_active')->nullable();
-            $table->boolean('is_default')->nullable();
-            $table->boolean('is_client_visible')->nullable();
-            $table->integer('external_code')->nullable();
+            $table->string('description');
+            $table->boolean('is_active');
+            $table->boolean('is_default');
+            $table->boolean('is_client_visible');
+            $table->integer('external_code');
             $table->timestamps();
         });
     }

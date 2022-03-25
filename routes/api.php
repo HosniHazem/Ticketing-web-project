@@ -8,6 +8,7 @@ use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,13 @@ use App\Http\Controllers\TicketController;
     Route::put('{id}/update', [TicketController::class,'update']);
     Route::post('/create',[TicketController::class,'store']);
 //});
+///Category:
+Route::get('Category/{id}/show', [CategoryController::class,'show']);
+    Route::get('Category', [CategoryController::class,'index']);
+    Route::delete('Category/{id}/delete', [CategoryController::class,'destroy']);
+    Route::put('Category/{id}/update', [CategoryController::class,'update']);
+    Route::post('Category/create',[CategoryController::class,'store']);
+    ///////
 ///Status:
 Route::get('Status/{id}/show', [StatusController::class,'show']);
     Route::get('Status', [StatusController::class,'index']);
