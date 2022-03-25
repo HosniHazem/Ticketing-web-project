@@ -49,14 +49,10 @@ class Ticket extends Model
     {
         return $this->belongsTo('App\Category');
     }
-   /* public function sub_category() //*
+    public function User() //*
     {
-        return $this->belongsTo('App\SubCategory');
-    }*/
-    /*public function items() //*
-    {
-        return $this->belongsTo('App\Items');
-    }*/
+        return $this->belongsTo('App\User');
+    }
     public function status() //*
     {
         return $this->belongsTo('App\Status');

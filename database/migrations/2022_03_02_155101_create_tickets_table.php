@@ -41,7 +41,8 @@ class CreateTicketsTable extends Migration
             $table->String("CreatedUser")->nullable();
             $table->String("UpdatedUser")->nullable();
             $table->String("RequestedUser")->nullable();
-            $table->String("AssignedUser")->nullable();
+            $table->integer("UseId")->unsigned()->nullable();
+            $table->foreign('UseId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->datetime("AssignedDate")->nullable();
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
