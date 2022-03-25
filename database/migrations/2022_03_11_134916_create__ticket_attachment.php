@@ -16,7 +16,7 @@ class CreateTicketAttachment extends Migration
         Schema::create('ticket_attachments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('TicketId')->unsigned();
-            $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string("file_name");
             $table->string("display_name");
             $table->string("extension");

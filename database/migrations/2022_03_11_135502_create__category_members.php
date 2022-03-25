@@ -16,7 +16,7 @@ class CreateCategoryMembers extends Migration
         Schema::create('category_members', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('Category_id')->unsigned();
-            $table->foreign('Category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('Category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('user_id');
             $table->string('category_name');
             $table->timestamps();
