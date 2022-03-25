@@ -33,7 +33,7 @@ class ItemsController extends Controller
     public function store(Request $req)
     {
         $item =new Items();
-        $item->Subcategoryid=$req->Subcategoryid; //!
+     //   $item->Subcategoryid=$req->Subcategoryid; 
         $item->name=$req->name;
         $item->description=$req->description;
         $item->is_active=$req->is_active;
@@ -48,7 +48,7 @@ class ItemsController extends Controller
         $item =Items::find($id);
 
         if($item){
-            $item->Subcategoryid=$req->Subcategoryid; //!
+        //    $item->Subcategoryid=$req->Subcategoryid; 
             $item->name=$req->name;
             $item->description=$req->description;
             $item->is_active=$req->is_active;

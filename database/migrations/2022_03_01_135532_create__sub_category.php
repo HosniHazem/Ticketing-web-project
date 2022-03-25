@@ -16,7 +16,7 @@ class CreateSubCategory extends Migration
         Schema::create('sub_category', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string('name');
             $table->string('description');
             $table->boolean('is_active');

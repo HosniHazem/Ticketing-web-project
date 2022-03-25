@@ -15,10 +15,11 @@ class CreateComments extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('CommentId');
-            $table->integer("AuthorId");
+            $table->integer("UserId")->unsigned();
+            $table->foreign('UserId')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer("ParentCommentId");
             $table->integer('TicketId')->unsigned();
-            $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string("Boby");
             $table->datetime("CreatedDate");
             $table->datetime("update_date");

@@ -33,7 +33,7 @@ class RolePermissionController extends Controller
     public function store(Request $req)
     {
         $item =new RolePermission();
-        $item->RoleID=$req->RoleID; //-
+      //  $item->RoleID=$req->RoleID; 
         $item->MenuID=$req->MenuID;
         $item->Is_Full=$req->Is_Full;
         $item->Is_View=$req->Is_View;
@@ -45,7 +45,7 @@ class RolePermissionController extends Controller
         $item =RolePermission::find($id);
 
         if($item){
-        $item->RoleID=$req->RoleID; //-
+        //$item->RoleID=$req->RoleID;
         $item->MenuID=$req->MenuID;
         $item->Is_Full=$req->Is_Full;
         $item->Is_View=$req->Is_View;

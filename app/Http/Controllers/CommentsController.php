@@ -33,9 +33,9 @@ class CommentsController extends Controller
     public function store(Request $req)
     {
         $item =new Comments();
-        $item->Authorld=$req->Authorld; //!
+        //$item->Authorld=$req->Authorld; 
         $item->ParentCommentid=$req->ParentCommentid;
-        $item->TicketID=$req->TicketID; //!
+       // $item->TicketID=$req->TicketID; 
         $item->Boby=$req->Boby;
         $item->save();
         return response()->json(['message'=>'done'], 200);
@@ -45,9 +45,9 @@ class CommentsController extends Controller
         $item =Comments::find($id);
 
         if($item){
-            $item->Authorld=$req->Authorld; //!
+            //$item->Authorld=$req->Authorld;
             $item->ParentCommentid=$req->ParentCommentid;
-            $item->TicketID=$req->TicketID; //!
+            //$item->TicketID=$req->TicketID; 
             $item->Boby=$req->Boby;
         $item->update();
         return response()->json(['message'=>'done'], 200);
