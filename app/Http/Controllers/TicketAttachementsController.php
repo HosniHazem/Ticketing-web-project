@@ -33,7 +33,7 @@ class ImpactController extends Controller
     public function store(Request $req)
     {
         $item =new TicketAttachements();
-        $item->TicketID=$req->TicketID;
+        //$item->TicketID=$req->TicketID;
         $item->FileName=$req->FileName;
         $item->DisplayName=$req->DisplayName;
         $item->Extension=$req->Extension;
@@ -46,7 +46,7 @@ class ImpactController extends Controller
         $item =TicketAttachements::find($id);
 
         if($item){
-        $item->TicketID=$req->TicketID;
+        //$item->TicketID=$req->TicketID;
         $item->FileName=$req->FileName;
         $item->DisplayName=$req->DisplayName;
         $item->Extension=$req->Extension;

@@ -33,7 +33,7 @@ class CategoryMembersController extends Controller
     public function store(Request $req)
     {
         $item =new CategoryMembers();
-        $item->UserID=$req->UserID; //-
+        //$item->UserID=$req->UserID; 
         $item->CategoryName=$req->CategoryName;
         $item->save();
         return response()->json(['message'=>'done'], 200);
@@ -43,9 +43,9 @@ class CategoryMembersController extends Controller
         $item =CategoryMembers::find($id);
 
         if($item){
-            $item->UserID=$req->UserID; //-
+        //    $item->UserID=$req->UserID; 
             $item->CategoryName=$req->CategoryName;
-        $item->update();
+            $item->update();
         return response()->json(['message'=>'done'], 200);
                 }
                 else
