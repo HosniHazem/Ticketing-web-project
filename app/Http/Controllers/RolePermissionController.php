@@ -33,10 +33,10 @@ class RolePermissionController extends Controller
     public function store(Request $req)
     {
         $item =new RolePermission();
-      //  $item->RoleID=$req->RoleID; 
-        $item->MenuID=$req->MenuID;
-        $item->Is_Full=$req->Is_Full;
-        $item->Is_View=$req->Is_View;
+      //  $item->RoleID=$req->RoleID;
+        $item->menu_id=$req->MenuID;
+        $item->is_full=$req->Is_Full;
+        $item->is_view=$req->Is_View;
         $item->save();
         return response()->json(['message'=>'done'], 200);
     }
@@ -46,9 +46,9 @@ class RolePermissionController extends Controller
 
         if($item){
         //$item->RoleID=$req->RoleID;
-        $item->MenuID=$req->MenuID;
-        $item->Is_Full=$req->Is_Full;
-        $item->Is_View=$req->Is_View;
+        $item->menu_id=$req->MenuID;
+        $item->is_full=$req->Is_Full;
+        $item->is_view=$req->Is_View;
         $item->update();
         return response()->json(['message'=>'done'], 200);
                 }

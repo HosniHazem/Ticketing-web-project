@@ -15,7 +15,7 @@ class CreateItem extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sub_category_id')->unsigned();
+            $table->integer('sub_category_id')->unsigned()->nullable();
             $table->foreign('sub_category_id')->references('id')->on('sub_category')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string('name');
             $table->string('description');

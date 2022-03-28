@@ -14,17 +14,13 @@ class CreateComments extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->increments('CommentId');
-            $table->integer("UserId")->unsigned();
-            $table->foreign('UserId')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->increments('id');
+            $table->integer("UserId")->unsigned()->nullable();
+            $table->foreign('UserId')->references('id')->on('Users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer("ParentCommentId");
-            $table->integer('TicketId')->unsigned();
+            $table->integer('TicketId')->unsigned()->nullable();
             $table->foreign('TicketId')->references('id')->on('tickets')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string("Boby");
-            $table->datetime("CreatedDate");
-            $table->datetime("update_date");
-
-
             $table->timestamps();
         });
     }

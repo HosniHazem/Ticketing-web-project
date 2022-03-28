@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TicketModel;
+use App\Models\TicketModels;
 
 class TicketModelController extends Controller
 {
@@ -11,10 +11,10 @@ class TicketModelController extends Controller
     public function show($id)
     {
 
-        $item =TicketModel::find($id);
+        $item =TicketModels::find($id);
         if($item){
 
-        return response()->json(['TicketModel'=>$item], 200);
+        return response()->json(['TicketModels'=>$item], 200);
         }
     else
     {
@@ -25,14 +25,14 @@ class TicketModelController extends Controller
     public function index()
     {
 
-        $item =TicketModel::all();
+        $item =TicketModels::all();
 
-        return response()->json(['TicketModel'=>$item], 200);
+        return response()->json(['TicketModels'=>$item], 200);
     }
 
     public function store(Request $req)
     {
-        $item =new TicketModel();
+        $item =new TicketModels();
         $item->name=$req->name;
         $item->description=$req->description;
         $item->is_active=$req->is_active;
@@ -41,7 +41,7 @@ class TicketModelController extends Controller
     }
     public function update(Request $req,$id)
     {
-        $item =TicketModel::find($id);
+        $item =TicketModels::find($id);
 
         if($item){
             $item->name=$req->name;
@@ -58,7 +58,7 @@ class TicketModelController extends Controller
     public function destroy($id)
     {
 
-        $item =TicketModel::find($id);
+        $item =TicketModels::find($id);
         if($item){
         $item->delete();
         return response()->json(['message'=>'deleted'], 200);

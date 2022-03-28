@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('role_id')->nullable()->unsigned();
+            $table->integer('role_id')->unsigned()->nullable();
             $table->foreign('role_id')->nullable()->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string('display_name');
             $table->string('user_name');;
@@ -37,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->string('description');
             $table->binary('profile_picture');
             $table->boolean('is_active');
-            $table->datetime('created_date');
             $table->integer('external_code');
             $table->integer('company_id');
             $table->timestamps();

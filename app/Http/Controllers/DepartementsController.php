@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Departements;
+use App\Models\Departments;
 
 class DepartementsController extends Controller
 {
@@ -11,10 +11,10 @@ class DepartementsController extends Controller
     public function show($id)
     {
 
-        $item =Departements::find($id);
+        $item =Departments::find($id);
         if($item){
 
-        return response()->json(['Departements'=>$item], 200);
+        return response()->json(['Departments'=>$item], 200);
         }
     else
     {
@@ -25,14 +25,14 @@ class DepartementsController extends Controller
     public function index()
     {
 
-        $item =Departements::all();
+        $item =Departments::all();
 
-        return response()->json(['Departements'=>$item], 200);
+        return response()->json(['Departments'=>$item], 200);
     }
 
     public function store(Request $req)
     {
-        $item =new Departements();
+        $item =new Departments();
         $item->name=$req->name;
         $item->description=$req->description;
         $item->is_active=$req->is_active;
@@ -41,7 +41,7 @@ class DepartementsController extends Controller
     }
     public function update(Request $req,$id)
     {
-        $item =Departements::find($id);
+        $item =Departments::find($id);
 
         if($item){
             $item->name=$req->name;
@@ -58,7 +58,7 @@ class DepartementsController extends Controller
     public function destroy($id)
     {
 
-        $item =Departements::find($id);
+        $item =Departments::find($id);
         if($item){
         $item->delete();
         return response()->json(['message'=>'deleted'], 200);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Request_type;
+use Illuminate\Http\Request;
 
 class RequestTypeController extends Controller
 {
@@ -11,7 +11,7 @@ class RequestTypeController extends Controller
     public function show($id)
     {
 
-        $item =RequestType::find($id);
+        $item =Request_type::find($id);
         if($item){
 
         return response()->json(['RequestType'=>$item], 200);
@@ -25,14 +25,14 @@ class RequestTypeController extends Controller
     public function index()
     {
 
-        $item =RequestType::all();
+        $item =Request_type::all();
 
         return response()->json(['RequestType'=>$item], 200);
     }
 
     public function store(Request $req)
     {
-        $item =new RequestType();
+        $item =new Request_type();
         $item->name=$req->name;
         $item->description=$req->description;
         $item->is_active=$req->is_active;
@@ -43,7 +43,7 @@ class RequestTypeController extends Controller
     }
     public function update(Request $req,$id)
     {
-        $item =RequestType::find($id);
+        $item =Request_type::find($id);
 
         if($item){
             $item->name=$req->name;
@@ -62,7 +62,7 @@ class RequestTypeController extends Controller
     public function destroy($id)
     {
 
-        $item =RequestType::find($id);
+        $item =Request_type::find($id);
         if($item){
         $item->delete();
         return response()->json(['message'=>'deleted'], 200);

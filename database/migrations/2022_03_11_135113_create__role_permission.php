@@ -15,7 +15,7 @@ class CreateRolePermission extends Migration
     {
         Schema::create('role_permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('role_id')->unsigned();
+            $table->integer('role_id')->unsigned()->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('menu_id');
             $table->boolean('is_full');

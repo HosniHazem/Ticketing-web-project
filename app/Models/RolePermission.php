@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RolePermission extends Model
 {
     use HasFactory;
-    protected  $table='roles_permissions';
+    protected  $table='role_permissions';
     public function roles() //*
     {
         return $this->belongsTo('App\Roles');

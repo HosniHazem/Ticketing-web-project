@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TicketAttachements;
 
-class ImpactController extends Controller
+class TicketAttachementsController extends Controller
 {
 
     public function show($id)
@@ -34,10 +34,10 @@ class ImpactController extends Controller
     {
         $item =new TicketAttachements();
         //$item->TicketID=$req->TicketID;
-        $item->FileName=$req->FileName;
-        $item->DisplayName=$req->DisplayName;
-        $item->Extension=$req->Extension;
-        $item->FileSize=$req->FileSize;
+        $item->file_name=$req->FileName;
+        $item->display_name=$req->DisplayName;
+        $item->extension=$req->Extension;
+        $item->file_size=$req->FileSize;
         $item->save();
         return response()->json(['message'=>'done'], 200);
     }
@@ -47,10 +47,10 @@ class ImpactController extends Controller
 
         if($item){
         //$item->TicketID=$req->TicketID;
-        $item->FileName=$req->FileName;
-        $item->DisplayName=$req->DisplayName;
-        $item->Extension=$req->Extension;
-        $item->FileSize=$req->FileSize;
+        $item->file_name=$req->FileName;
+        $item->display_name=$req->DisplayName;
+        $item->extension=$req->Extension;
+        $item->file_size=$req->FileSize;
         $item->update();
         return response()->json(['message'=>'done'], 200);
                 }
