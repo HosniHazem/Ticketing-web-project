@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Sanctum\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemsController;
@@ -23,6 +23,7 @@ use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\CategoryMembersController;
 use App\Http\Controllers\TicketCloseModelController;
 use App\Http\Controllers\TicketAttachementsController;
+use App\Http\Controllers\JWTController;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,15 +179,28 @@ Route::post('User/create',[UserController::class,'store']);
 
 
 
-//Auth::routes();
+
+// Search
 Route::get('/search', [SearchController::class, 'search']);
+// Messages
+Route::post('messages', [ChatController::class, 'message']);
+
+
+///// JWT auth
+Route::post('login', [JWTController::class,'login']);
+Route::post('register', [JWTController::class,'register']);
+
+Route::group(['middleware'=>'api'],function(){
+    Route::post('logout', [JWTController::class,'logout']);
+    Route::post('refresh', [JWTController::class,'refresh']);
+    Route::post('me', [JWTController::class,'me']);
+});
+
+/*// Sanctum auth
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-//////
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [AuthController::class, 'user']);
     Route::post('logout', [AuthController::class, 'logout']);
-});
-// Messages
-Route::post('messages', [ChatController::class, 'message']);
+});*/
