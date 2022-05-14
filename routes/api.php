@@ -195,6 +195,7 @@ Route::group(['middleware'=>'api'],function(){
     Route::post('refresh', [JWTController::class,'refresh']);
     Route::post('me', [JWTController::class,'me']);
 });
+//enna
 
 /*// Sanctum auth
 Route::post('register', [AuthController::class, 'register']);
