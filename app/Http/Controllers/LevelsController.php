@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Levels;
-
+use Illuminate\Support\Facades\Validator;
 class LevelsController extends Controller
 {
 
@@ -14,11 +14,11 @@ class LevelsController extends Controller
         $item =Levels::find($id);
         if($item){
 
-        return response()->json(['Levels'=>$item], 200);
+        return response()->json(['Levels'=>$item,'status' => 200]);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status' => 404]);
     }
     }
 
@@ -27,21 +27,50 @@ class LevelsController extends Controller
 
         $item =Levels::all();
 
-        return response()->json(['Levels'=>$item], 200);
+        return response()->json(['Levels'=>$item,'status' => 200]);
     }
 
     public function store(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+            'name' => 'required',
+            'description' => 'required',
+            'Is_Active' => 'required',
+            'Is_Defaults' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =new Levels();
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->Is_Defaults=$req->Is_Defaults;
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
+
+    }
     }
     public function update(Request $req,$id)
     {
+        $validator = Validator::make($req->all(), [
+            'name' => 'required',
+            'description' => 'required',
+            'Is_Active' => 'required',
+            'Is_Defaults' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
+
         $item =Levels::find($id);
 
         if($item){
@@ -50,12 +79,15 @@ class LevelsController extends Controller
         $item->Is_Active=$req->Is_Active;
         $item->Is_Defaults=$req->Is_Defaults;
         $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
                 }
+
+
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
+                return response()->json(['message'=>'done','status' => 404]);
                 }
+            }
     }
     public function destroy($id)
     {

@@ -59,7 +59,7 @@ Route::get('Status/{id}/show', [StatusController::class,'show']);
 ///Levels:
 Route::get('Levels/{id}/show', [LevelsController::class,'show']);
     Route::get('Levels', [LevelsController::class,'index']);
-    Route::delete('Levels/{id}/delete', [LevelsController::class,'destroy']);
+    Route::delete('Levels/delete/{id}', [LevelsController::class,'destroy']);
     Route::put('Levels/{id}/update', [LevelsController::class,'update']);
     Route::post('Levels/create',[LevelsController::class,'store']);
     ///////

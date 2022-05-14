@@ -17,8 +17,8 @@ class CreateLevels extends Migration
             $table->increments('id');
             $table->string("name");
             $table->string("description");
-            $table->boolean("Is_Active");
-            $table->boolean("Is_Defaults");
+            $table->string("Is_Active");
+            $table->string("Is_Defaults");
             $table->timestamps();
         });
     }
