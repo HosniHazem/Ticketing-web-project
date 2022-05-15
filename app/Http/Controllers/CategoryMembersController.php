@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CategoryMembers;
+use Illuminate\Support\Facades\Validator;
+
 
 class CategoryMembersController extends Controller
 {
@@ -32,26 +34,48 @@ class CategoryMembersController extends Controller
 
     public function store(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+            'CategoryName' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =new CategoryMembers();
         //$item->UserID=$req->UserID; 
         $item->CategoryName=$req->CategoryName;
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status'=> 200]);
+        }
     }
     public function update(Request $req,$id)
     {
+        $validator = Validator::make($req->all(), [
+            'CategoryName' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =CategoryMembers::find($id);
 
         if($item){
         //    $item->UserID=$req->UserID; 
             $item->CategoryName=$req->CategoryName;
             $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
                 }
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
-                }
+                return response()->json(['message'=>'not done','status' => 404]);
+            }
+        }
     }
     public function destroy($id)
     {

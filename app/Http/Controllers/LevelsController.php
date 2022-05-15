@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Levels;
 use Illuminate\Support\Facades\Validator;
+
 class LevelsController extends Controller
 {
 
@@ -85,7 +86,7 @@ class LevelsController extends Controller
 
                 else
                 {
-                return response()->json(['message'=>'done','status' => 404]);
+                return response()->json(['message'=>'not done','status' => 404]);
                 }
             }
     }

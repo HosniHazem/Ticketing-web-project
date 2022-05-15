@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TicketAttachements;
+use Illuminate\Support\Facades\Validator;
+
 
 class TicketAttachementsController extends Controller
 {
@@ -32,6 +34,19 @@ class TicketAttachementsController extends Controller
 
     public function store(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+            'file_name' => 'required',
+            'display_name' => 'required',
+            'extension' => 'required',
+            'file_size' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =new TicketAttachements();
         //$item->TicketID=$req->TicketID;
         $item->file_name=$req->FileName;
@@ -39,10 +54,24 @@ class TicketAttachementsController extends Controller
         $item->extension=$req->Extension;
         $item->file_size=$req->FileSize;
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
     }
+}
     public function update(Request $req,$id)
     {
+        $validator = Validator::make($req->all(), [
+            'file_name' => 'required',
+            'display_name' => 'required',
+            'extension' => 'required',
+            'file_size' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =TicketAttachements::find($id);
 
         if($item){
@@ -52,12 +81,13 @@ class TicketAttachementsController extends Controller
         $item->extension=$req->Extension;
         $item->file_size=$req->FileSize;
         $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
                 }
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
+                return response()->json(['message'=>'not done','status' => 404]);
                 }
+            }
     }
     public function destroy($id)
     {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserController extends Controller
 {
@@ -32,6 +34,35 @@ class UserController extends Controller
 
     public function store(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'email_verified_at' => 'required',
+            'password' => 'required',
+            'display_name' => 'required',
+            'user_name' => 'required',
+            'cell_phone_no' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+            'pin_code' => 'required',
+            'job_title' => 'required',
+            'address' => 'required',
+            'time_zone_id' => 'required',
+            'is_sendmail_password' => 'required',
+            'description' => 'required',
+            'profile_picture' => 'required',
+            'is_active' => 'required',
+            'external_code' => 'required',
+            'company_id' => 'required',           
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =new User();
         //$item->RoleID=$req->RoleID;
         $item->name=$req->name;
@@ -56,10 +87,40 @@ class UserController extends Controller
         $item->external_code=$req->external_code;
         $item->company_id=$req->company_id;
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
     }
+}
     public function update(Request $req,$id)
     {
+        $validator = Validator::make($req->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'email_verified_at' => 'required',
+            'password' => 'required',
+            'display_name' => 'required',
+            'user_name' => 'required',
+            'cell_phone_no' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+            'pin_code' => 'required',
+            'job_title' => 'required',
+            'address' => 'required',
+            'time_zone_id' => 'required',
+            'is_sendmail_password' => 'required',
+            'description' => 'required',
+            'profile_picture' => 'required',
+            'is_active' => 'required',
+            'external_code' => 'required',
+            'company_id' => 'required',           
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =User::find($id);
 
         if($item){
@@ -86,12 +147,13 @@ class UserController extends Controller
             $item->external_code=$req->external_code;
             $item->company_id=$req->company_id;
             $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200]);
                 }
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
+                return response()->json(['message'=>'not done','status' => 404]);
                 }
+            }
     }
     public function destroy($id)
     {
