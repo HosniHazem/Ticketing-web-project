@@ -18,8 +18,8 @@ class CreateRolePermission extends Migration
             $table->integer('role_id')->unsigned()->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('menu_id');
-            $table->boolean('is_full');
-            $table->boolean('is_view');
+            $table->string('Is_Full');
+            $table->string('Is_View');
             $table->timestamps();
         });
     }

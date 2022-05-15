@@ -14,11 +14,11 @@ class CategoryController extends Controller
         $item =Category::find($id);
         if($item){
 
-        return response()->json(['Category'=>$item], 200);
+        return response()->json(['Category'=>$item,'status'=>200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status'=>404], 404);
     }
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
         $item =Category::all();
 
-        return response()->json(['Category'=>$item], 200);
+        return response()->json(['Category'=>$item,'status'=>200], 200);
     }
 
     public function store(Request $req)
@@ -35,12 +35,12 @@ class CategoryController extends Controller
         $item =new Category();
         $item->name=$req->name;
         $item->description=$req->description;
-        $item->is_active=$req->is_active;
+        $item->Is_Active=$req->Is_Active;
         $item->external_code=$req->external_code;
-        $item->is_default=$req->is_default;
-        $item->is_client_visible=$req->is_client_visible;
+        $item->Is_Defaults=$req->Is_Defaults;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status'=>200], 200);
     }
     public function update(Request $req,$id)
     {
@@ -49,16 +49,16 @@ class CategoryController extends Controller
         if($item){
             $item->name=$req->name;
             $item->description=$req->description;
-            $item->is_active=$req->is_active;
+            $item->Is_Active=$req->Is_Active;
             $item->external_code=$req->external_code;
-            $item->is_default=$req->is_default;
-            $item->is_client_visible=$req->is_client_visible;
+            $item->Is_Defaults=$req->Is_Defaults;
+            $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status'=>200], 200);
                 }
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
+                return response()->json(['message'=>'not done','status'=>404], 404);
                 }
     }
     public function destroy($id)
@@ -67,11 +67,11 @@ class CategoryController extends Controller
         $item =Category::find($id);
         if($item){
         $item->delete();
-        return response()->json(['message'=>'deleted'], 200);
+        return response()->json(['message'=>'deleted','status'=>200], 200);
                 }
                 else
                 {
-                return response()->json(['message'=>'not deleted'], 404);
+                return response()->json(['message'=>'not deleted','status'=>404], 404);
                 }
     }
 }

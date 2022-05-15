@@ -17,7 +17,7 @@ class CreateDepartments extends Migration
             $table->increments('id');
             $table->string('Name');
             $table->string('Description');
-            $table->boolean('is_active');
+            $table->string('Is_Active');
             $table->timestamps();
         });
     }

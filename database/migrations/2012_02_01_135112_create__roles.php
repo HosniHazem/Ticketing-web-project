@@ -17,11 +17,10 @@ class CreateRoles extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->boolean('is_agent');
-            $table->boolean('is_client');
-            $table->boolean('is_active');
-            $table->datetime('created_date');
-            $table->boolean('is_manager');
+            $table->string('Is_Agent');
+            $table->string('Is_Client');
+            $table->string('Is_Active');
+            $table->string('Is_Manager');
             $table->timestamps();
         });
     }

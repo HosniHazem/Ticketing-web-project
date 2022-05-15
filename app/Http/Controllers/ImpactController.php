@@ -14,11 +14,11 @@ class ImpactController extends Controller
         $item =Impacts::find($id);
         if($item){
 
-        return response()->json(['Impact'=>$item], 200);
+        return response()->json(['Impact'=>$item,'status'=> 200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status'=> 404], 404);
     }
     }
 
@@ -27,7 +27,7 @@ class ImpactController extends Controller
 
         $item =Impacts::all();
 
-        return response()->json(['Impacts'=>$item], 200);
+        return response()->json(['Impact'=>$item,'status'=> 200], 200);
     }
 
     public function store(Request $req)
@@ -37,9 +37,9 @@ class ImpactController extends Controller
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->Is_Defaults=$req->Is_Defaults;
-        $item->Is_client_visible=$req->Is_client_visible;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status'=> 200], 200);
     }
     public function update(Request $req,$id)
     {
@@ -50,13 +50,13 @@ class ImpactController extends Controller
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->Is_Defaults=$req->Is_Defaults;
-        $item->Is_client_visible=$req->Is_client_visible;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status'=> 200], 200);
                 }
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
+                return response()->json(['message'=>'not done','status'=> 404], 404);
                 }
     }
     public function destroy($id)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Status;
+use Illuminate\Support\Facades\Validator;
 
 class StatusController extends Controller
 {
@@ -35,10 +36,10 @@ class StatusController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'is_active' => 'required',
-            'is_default' => 'required',
-            'is_closed' => 'required',
-            'is_client_visible' => 'required',
+            'Is_Active' => 'required',
+            'Is_Default' => 'required',
+            'Is_Closed' => 'required',
+            'Is_Client_Visible' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -50,13 +51,14 @@ class StatusController extends Controller
         $item =new Status();
         $item->name=$req->name;
         $item->description=$req->description;
-        $item->is_active=$req->is_active;
-        $item->is_closed=$req->is_closed;
-        $item->is_default=$req->is_default;
-        $item->is_client_visible=$req->is_client_visible;
+        $item->Is_Active=$req->Is_Active;
+        $item->Is_Closed=$req->Is_Closed;
+        $item->Is_Default=$req->Is_Default;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
-        }
+
         return response()->json(['message'=>'done','status' => 200], 200);
+    }
     }
     public function update(Request $req,$id)
     {
@@ -65,10 +67,10 @@ class StatusController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'is_active' => 'required',
-            'is_default' => 'required',
-            'is_closed' => 'required',
-            'is_client_visible' => 'required',
+            'Is_Active' => 'required',
+            'Is_Default' => 'required',
+            'Is_Closed' => 'required',
+            'Is_Client_Visible' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -80,10 +82,10 @@ class StatusController extends Controller
         if($item){
             $item->name=$req->name;
             $item->description=$req->description;
-            $item->is_active=$req->is_active;
-            $item->is_closed=$req->is_closed;
-            $item->is_default=$req->is_default;
-            $item->is_client_visible=$req->is_client_visible;
+            $item->Is_Active=$req->Is_Active;
+            $item->Is_Closed=$req->Is_Closed;
+            $item->Is_Default=$req->Is_Default;
+            $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
         return response()->json(['message'=>'done','status' => 200], 200);
                 }

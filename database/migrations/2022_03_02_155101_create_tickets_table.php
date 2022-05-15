@@ -51,12 +51,12 @@ class CreateTicketsTable extends Migration
             $table->integer('TicketCloseModelID')->unsigned();
             $table->foreign('TicketCloseModelID')->references('id')->on('ticket_close_models')->onDelete('cascade')->onUpdate('cascade');
             $table->String("StatusCloseReason");
-            $table->boolean("Is_FCR");
-            $table->boolean("Is_Active");
+            $table->string("Is_FCR");
+            $table->string("Is_Active");
             $table->String("TicketStatusMessage");
             $table->datetime("EstimatedTime");
             $table->datetime("SpentTime");
-            $table->boolean("Is_Validate_EstimatedTime");
+            $table->string("Is_Validate_EstimatedTime");
             $table->timestamps();
         });
     }

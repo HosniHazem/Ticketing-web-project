@@ -19,9 +19,9 @@ class CreateItem extends Migration
             $table->foreign('sub_category_id')->references('id')->on('sub_category')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string('name');
             $table->string('description');
-            $table->boolean('is_active');
-            $table->boolean('is_default');
-            $table->boolean('is_client_visible');
+            $table->string("Is_Active");
+            $table->string("Is_Defaults");
+            $table->string("Is_Client_Visible");
             $table->integer('external_code');
             $table->timestamps();
         });
