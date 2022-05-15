@@ -16,7 +16,7 @@ class TicketModelController extends Controller
         $item =TicketModels::find($id);
         if($item){
 
-        return response()->json(['TicketModels'=>$item], 200);
+        return response()->json(['TicketModel'=>$item], 200);
         }
     else
     {
@@ -29,7 +29,7 @@ class TicketModelController extends Controller
 
         $item =TicketModels::all();
 
-        return response()->json(['TicketModels'=>$item], 200);
+        return response()->json(['TicketModel'=>$item], 200);
     }
 
     public function store(Request $req)
