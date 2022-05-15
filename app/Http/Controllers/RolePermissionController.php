@@ -34,11 +34,11 @@ class RolePermissionController extends Controller
 
     public function store(Request $req)
     {
-        
+
         $validator = Validator::make($req->all(), [
             'menu_id' => 'required',
-            'is_full' => 'required',
-            'is_view' => 'required',            
+            'Is_Full' => 'required',
+            'Is_View' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -50,19 +50,19 @@ class RolePermissionController extends Controller
         $item =new RolePermission();
       //  $item->RoleID=$req->RoleID;
         $item->menu_id=$req->MenuID;
-        $item->is_full=$req->Is_Full;
-        $item->is_view=$req->Is_View;
+        $item->Is_Full=$req->Is_Full;
+        $item->Is_View=$req->Is_View;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
     }
 }
     public function update(Request $req,$id)
     {
-        
+
         $validator = Validator::make($req->all(), [
             'menu_id' => 'required',
-            'is_full' => 'required',
-            'is_view' => 'required',            
+            'Is_Full' => 'required',
+            'Is_View' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -76,8 +76,8 @@ class RolePermissionController extends Controller
         if($item){
         //$item->RoleID=$req->RoleID;
         $item->menu_id=$req->MenuID;
-        $item->is_full=$req->Is_Full;
-        $item->is_view=$req->Is_View;
+        $item->Is_Full=$req->Is_Full;
+        $item->Is_View=$req->Is_View;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }

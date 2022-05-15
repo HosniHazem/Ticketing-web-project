@@ -39,7 +39,7 @@ class ImpactController extends Controller
             'description' => 'required',
             'Is_Active' => 'required',
             'Is_Defaults' => 'required',
-            'Is_client_visible' => 'required',
+            'Is_Client_Visible' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -53,7 +53,7 @@ class ImpactController extends Controller
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->Is_Defaults=$req->Is_Defaults;
-        $item->Is_client_visible=$req->Is_client_visible;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
     }
@@ -65,7 +65,7 @@ class ImpactController extends Controller
             'description' => 'required',
             'Is_Active' => 'required',
             'Is_Defaults' => 'required',
-            'Is_client_visible' => 'required',
+            'Is_Client_Visible' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -81,7 +81,7 @@ class ImpactController extends Controller
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->Is_Defaults=$req->Is_Defaults;
-        $item->Is_client_visible=$req->Is_client_visible;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }

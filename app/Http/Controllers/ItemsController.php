@@ -38,7 +38,7 @@ class ItemsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Default' => 'required',
+            'Is_Defaults' => 'required',
             'Is_Client_Visible' => 'required',
             'external_code' => 'required',
         ]);
@@ -50,12 +50,12 @@ class ItemsController extends Controller
             ]);
         } else {
         $item =new Items();
-     //   $item->Subcategoryid=$req->Subcategoryid; 
+     //   $item->Subcategoryid=$req->Subcategoryid;
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-        $item->Is_Default=$req->Is_Default;
-        $item->Is_Client_Visible=$req->Is_Client_Visible;        
+        $item->Is_Defaults=$req->Is_Defaults;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->external_code=$req->external_code;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
@@ -67,7 +67,7 @@ class ItemsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'is_active' => 'required',
-            'is_default' => 'required',
+            'is_defaults' => 'required',
             'is_client_visible' => 'required',
             'external_code' => 'required',
         ]);
@@ -81,11 +81,11 @@ class ItemsController extends Controller
         $item =Items::find($id);
 
         if($item){
-        //    $item->Subcategoryid=$req->Subcategoryid; 
+        //    $item->Subcategoryid=$req->Subcategoryid;
             $item->name=$req->name;
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
-            $item->is_default=$req->is_default;
+            $item->is_defaults=$req->is_defaults;
             $item->is_client_visible=$req->is_client_visible;
             $item->external_code=$req->external_code;
         $item->update();
