@@ -38,9 +38,9 @@ class SubCategoryController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'Is_active' => 'required',
-            'Is_default' => 'required',
-            'Is_client_visible' => 'required',
+            'Is_Active' => 'required',
+            'Is_Defaults' => 'required',
+            'Is_Client_Visible' => 'required',
             'external_code' => 'required',
         ]);
 
@@ -54,9 +54,9 @@ class SubCategoryController extends Controller
         //$item->categoryid=$req->categoryid; 
         $item->name=$req->name;
         $item->description=$req->description;
-        $item->Is_active=$req->Is_active;
-        $item->Is_default=$req->Is_default;
-        $item->Is_client_visible=$req->Is_client_visible;
+        $item->Is_Active=$req->Is_Active;
+        $item->Is_Defaults=$req->Is_Defaults;
+        $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->external_code=$req->external_code;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
@@ -67,9 +67,9 @@ class SubCategoryController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'Is_active' => 'required',
-            'Is_default' => 'required',
-            'Is_client_visible' => 'required',
+            'Is_Active' => 'required',
+            'Is_Defaults' => 'required',
+            'Is_Client_Visible' => 'required',
             'external_code' => 'required',
         ]);
 
@@ -85,9 +85,9 @@ class SubCategoryController extends Controller
             //$item->categoryid=$req->categoryid; 
             $item->name=$req->name;
             $item->description=$req->description;
-            $item->Is_active=$req->Is_active;
-            $item->Is_default=$req->Is_default;
-            $item->Is_client_visible=$req->Is_client_visible;
+            $item->Is_Active=$req->Is_Active;
+            $item->Is_Defaults=$req->Is_Defaults;
+            $item->Is_Client_Visible=$req->Is_Client_Visible;
             $item->external_code=$req->external_code;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);

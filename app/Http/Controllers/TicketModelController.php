@@ -37,7 +37,7 @@ class TicketModelController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'Is_active' => 'required',
+            'Is_Active' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -49,7 +49,7 @@ class TicketModelController extends Controller
         $item =new TicketModels();
         $item->name=$req->name;
         $item->description=$req->description;
-        $item->is_active=$req->is_active;
+        $item->Is_Active=$req->Is_Active;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
     }
@@ -59,7 +59,7 @@ class TicketModelController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'Is_active' => 'required',
+            'Is_Active' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -73,7 +73,7 @@ class TicketModelController extends Controller
         if($item){
             $item->name=$req->name;
             $item->description=$req->description;
-            $item->is_active=$req->is_active;
+            $item->Is_Active=$req->Is_Active;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }

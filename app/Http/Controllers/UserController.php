@@ -49,10 +49,10 @@ class UserController extends Controller
             'job_title' => 'required',
             'address' => 'required',
             'time_zone_id' => 'required',
-            'is_sendmail_password' => 'required',
+            'Is_Sendmail_Password' => 'required',
             'description' => 'required',
             'profile_picture' => 'required',
-            'is_active' => 'required',
+            'Is_Active' => 'required',
             'external_code' => 'required',
             'company_id' => 'required',           
         ]);
@@ -80,10 +80,10 @@ class UserController extends Controller
         $item->address=$req->address;
         $item->time_zone_id=$req->time_zone_id;
         $item->organization=$req->organization;
-        $item->is_sendmail_password=$req->is_sendmail_password;
+        $item->Is_Sendmail_Password=$req->Is_Sendmail_Password;
         $item->description=$req->description;
         $item->profile_picture=$req->profile_picture;
-        $item->is_active=$req->is_active;
+        $item->Is_Active=$req->Is_Active;
         $item->external_code=$req->external_code;
         $item->company_id=$req->company_id;
         $item->save();
@@ -107,10 +107,10 @@ class UserController extends Controller
             'job_title' => 'required',
             'address' => 'required',
             'time_zone_id' => 'required',
-            'is_sendmail_password' => 'required',
+            'Is_Sendmail_Password' => 'required',
             'description' => 'required',
             'profile_picture' => 'required',
-            'is_active' => 'required',
+            'Is_Active' => 'required',
             'external_code' => 'required',
             'company_id' => 'required',           
         ]);
@@ -140,10 +140,10 @@ class UserController extends Controller
             $item->address=$req->address;
             $item->time_zone_id=$req->time_zone_id;
             $item->organization=$req->organization;
-            $item->is_sendmail_password=$req->is_sendmail_password;
+            $item->Is_Sendmail_Password=$req->Is_Sendmail_Password;
             $item->description=$req->description;
             $item->profile_picture=$req->profile_picture;
-            $item->is_active=$req->is_active;
+            $item->Is_Active=$req->Is_Active;
             $item->external_code=$req->external_code;
             $item->company_id=$req->company_id;
             $item->update();

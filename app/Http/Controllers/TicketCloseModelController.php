@@ -38,8 +38,8 @@ class TicketCloseModelController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'Is_active' => 'required',
-            'Is_default' => 'required',
+            'Is_Active' => 'required',
+            'Is_Defaults' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -51,8 +51,8 @@ class TicketCloseModelController extends Controller
         $item =new TicketCloseModel();
         $item->name=$req->name;
         $item->description=$req->description;
-        $item->is_active=$req->is_active;
-        $item->is_default=$req->is_default;
+        $item->Is_Active=$req->Is_Active;
+        $item->Is_Defaults=$req->Is_Defaults;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
         }
@@ -62,8 +62,8 @@ class TicketCloseModelController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
-            'Is_active' => 'required',
-            'Is_default' => 'required',
+            'Is_Active' => 'required',
+            'Is_Defaults' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -77,8 +77,8 @@ class TicketCloseModelController extends Controller
         if($item){
             $item->name=$req->name;
             $item->description=$req->description;
-            $item->is_active=$req->is_active;
-            $item->is_default=$req->is_default;
+            $item->Is_Active=$req->Is_Active;
+            $item->Is_Defaults=$req->Is_Defaults;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }
