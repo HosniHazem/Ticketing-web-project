@@ -33,10 +33,10 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->integer('time_zone_id');
             $table->string('organization');
-            $table->boolean('is_sendmail_password');
+            $table->string('Is_Sendmail_Password');
             $table->string('description');
             $table->binary('profile_picture');
-            $table->boolean('is_active');
+            $table->string('Is_Active');
             $table->integer('external_code');
             $table->integer('company_id');
             $table->timestamps();

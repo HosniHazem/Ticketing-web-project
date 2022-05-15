@@ -17,10 +17,10 @@ class CreateStatus extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->boolean('is_closed');
-            $table->boolean('is_active');
-            $table->boolean('is_default');
-            $table->boolean('is_client_visible');
+            $table->string('Is_Closed');
+            $table->string('Is_Active');
+            $table->string('Is_Default');
+            $table->string('Is_Client_Visible');
             $table->timestamps();
         });
     }

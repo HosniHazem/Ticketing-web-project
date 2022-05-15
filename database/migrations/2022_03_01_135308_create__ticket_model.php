@@ -17,7 +17,8 @@ class CreateTicketModel extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->boolean('is_active');
+            $table->string("Is_Active");
+
             $table->timestamps();
         });
     }
