@@ -16,7 +16,7 @@ class RequestTypeController extends Controller
         $item =Request_type::find($id);
         if($item){
 
-        return response()->json(['RequestType'=>$item], 200);
+        return response()->json(['RequestType'=>$item,'status' => 200], 200);
         }
     else
     {
@@ -29,7 +29,7 @@ class RequestTypeController extends Controller
 
         $item =Request_type::all();
 
-        return response()->json(['RequestType'=>$item], 200);
+        return response()->json(['RequestType'=>$item,'status' => 200], 200);
     }
 
     public function store(Request $req)
@@ -89,7 +89,7 @@ class RequestTypeController extends Controller
                 }
                 else
                 {
-                return response()->json(['message'=>'not done','status' => 200]);
+                return response()->json(['message'=>'not done','status' => 404]);
                 }
             }
     }

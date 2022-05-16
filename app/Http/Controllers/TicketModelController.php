@@ -16,11 +16,11 @@ class TicketModelController extends Controller
         $item =TicketModels::find($id);
         if($item){
 
-        return response()->json(['TicketModel'=>$item], 200);
+        return response()->json(['TicketModel'=>$item,'status' => 200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status' => 200], 404);
     }
     }
 
@@ -29,7 +29,7 @@ class TicketModelController extends Controller
 
         $item =TicketModels::all();
 
-        return response()->json(['TicketModel'=>$item], 200);
+        return response()->json(['TicketModel'=>$item,'status' => 200], 200);
     }
 
     public function store(Request $req)
