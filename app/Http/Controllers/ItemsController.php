@@ -38,7 +38,7 @@ class ItemsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
             'Is_Client_Visible' => 'required',
             'external_code' => 'required',
         ]);
@@ -54,7 +54,7 @@ class ItemsController extends Controller
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-        $item->Is_Defaults=$req->Is_Defaults;
+
         $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->external_code=$req->external_code;
         $item->save();
@@ -67,7 +67,7 @@ class ItemsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'is_active' => 'required',
-            'is_defaults' => 'required',
+
             'is_client_visible' => 'required',
             'external_code' => 'required',
         ]);
@@ -85,7 +85,7 @@ class ItemsController extends Controller
             $item->name=$req->name;
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
-            $item->is_defaults=$req->is_defaults;
+
             $item->is_client_visible=$req->is_client_visible;
             $item->external_code=$req->external_code;
         $item->update();

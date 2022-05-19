@@ -19,7 +19,7 @@ class CreateStatus extends Migration
             $table->string('description');
             $table->string('Is_Closed');
             $table->string('Is_Active');
-            $table->string('Is_Default');
+
             $table->string('Is_Client_Visible');
             $table->timestamps();
         });

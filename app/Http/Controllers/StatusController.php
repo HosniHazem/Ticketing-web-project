@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Status;
-
+use Illuminate\Support\Facades\Validator;
 class StatusController extends Controller
 {
 
@@ -36,7 +36,7 @@ class StatusController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
             'Is_Closed' => 'required',
             'Is_Client_Visible' => 'required',
         ]);
@@ -52,7 +52,7 @@ class StatusController extends Controller
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->Is_Closed=$req->Is_Closed;
-        $item->Is_Defaults=$req->Is_Defaults;
+
         $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
         }
@@ -66,7 +66,7 @@ class StatusController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
             'Is_Closed' => 'required',
             'Is_Client_Visible' => 'required',
         ]);
@@ -82,7 +82,7 @@ class StatusController extends Controller
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
             $item->Is_Closed=$req->Is_Closed;
-            $item->Is_Defaults=$req->Is_Defaults;
+
             $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
         return response()->json(['message'=>'done','status' => 200], 200);

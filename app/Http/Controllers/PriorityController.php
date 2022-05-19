@@ -39,8 +39,7 @@ class PriorityController extends Controller
             'description' => 'required',
             'color' => 'required',
             'Is_Active' => 'required',
-            '
-            Is_Defaults' => 'required',
+
             'Is_Client_Visible' => 'required',
         ]);
 
@@ -55,7 +54,7 @@ class PriorityController extends Controller
         $item->description=$req->description;
         $item->color=$req->color;
         $item->Is_Active=$req->Is_Active;
-        $item->Is_Defaults=$req->Is_Defaults;
+
         $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
@@ -68,8 +67,7 @@ class PriorityController extends Controller
             'description' => 'required',
             'color' => 'required',
             'Is_Active' => 'required',
-            '
-            Is_Defaults' => 'required',
+
             'Is_Client_Visible' => 'required',
         ]);
 
@@ -86,7 +84,7 @@ class PriorityController extends Controller
             $item->description=$req->description;
             $item->color=$req->color;
             $item->Is_Active=$req->Is_Active;
-            $item->Is_Defaults=$req->Is_Defaults;
+
             $item->Is_Client_Visible=$req->Is_Client_Visible;
             $item->update();
         return response()->json(['message'=>'done','status' => 200]);

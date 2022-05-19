@@ -39,7 +39,7 @@ class LocationsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
             'Is_Client_Visible' => 'required',
         ]);
 
@@ -53,7 +53,7 @@ class LocationsController extends Controller
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-        $item->Is_Defaults=$req->Is_Defaults;
+
         $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
@@ -66,7 +66,7 @@ class LocationsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
             'Is_Client_Visible' => 'required',
         ]);
 
@@ -82,7 +82,7 @@ class LocationsController extends Controller
             $item->name=$req->name;
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
-            $item->Is_Defaults=$req->Is_Defaults;
+
             $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);

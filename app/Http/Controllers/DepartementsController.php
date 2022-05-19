@@ -60,7 +60,7 @@ class DepartementsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
         ]);
 
         if ($validator->fails()) {

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\SubCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -16,22 +17,32 @@ class SubCategoryController extends Controller
         $item =SubCategory::find($id);
         if($item){
 
-        return response()->json(['SubCategory'=>$item], 200);
+        return response()->json(['SubCategory'=>$item,'status' => 200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status' => 404], 404);
     }
     }
+
+    public function category()
+    {
+        $category = Category::all();
+        return response()->json([
+            'status' => 200,
+            'category' => $category,
+        ]);
+    }
+
 
     public function index()
     {
 
-        $item =SubCategory::all();
-
-        return response()->json(['SubCategory'=>$item], 200);
+        // $item =SubCategory::all();
+        $item = SubCategory::with('category')->get();
+        return response()->json(['SubCategory'=>$item,'status' => 200], 200);
     }
-    
+
 
     public function store(Request $req)
     {
@@ -39,7 +50,7 @@ class SubCategoryController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+            'category_id' => 'required',
             'Is_Client_Visible' => 'required',
             'external_code' => 'required',
         ]);
@@ -51,11 +62,11 @@ class SubCategoryController extends Controller
             ]);
         } else {
         $item =new SubCategory();
-        //$item->categoryid=$req->categoryid; 
+        $item->category_id=$req->category_id;
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-        $item->Is_Defaults=$req->Is_Defaults;
+
         $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->external_code=$req->external_code;
         $item->save();
@@ -68,7 +79,7 @@ class SubCategoryController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
             'Is_Client_Visible' => 'required',
             'external_code' => 'required',
         ]);
@@ -82,11 +93,11 @@ class SubCategoryController extends Controller
         $item =SubCategory::find($id);
 
         if($item){
-            //$item->categoryid=$req->categoryid; 
+            $item->category_id=$req->category_id;
             $item->name=$req->name;
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
-            $item->Is_Defaults=$req->Is_Defaults;
+
             $item->Is_Client_Visible=$req->Is_Client_Visible;
             $item->external_code=$req->external_code;
         $item->update();

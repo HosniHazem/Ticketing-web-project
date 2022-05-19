@@ -19,7 +19,7 @@ class CreatePeriority extends Migration
             $table->string("description");
             $table->string("color");
             $table->string("Is_Active");
-            $table->string("Is_Defaults");
+
             $table->string("Is_Client_Visible");
             $table->timestamps();
         });

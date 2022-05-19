@@ -20,7 +20,7 @@ class CreateItem extends Migration
             $table->string('name');
             $table->string('description');
             $table->string("Is_Active");
-            $table->string("Is_Defaults");
+
             $table->string("Is_Client_Visible");
             $table->integer('external_code');
             $table->timestamps();

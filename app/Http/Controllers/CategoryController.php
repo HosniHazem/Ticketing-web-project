@@ -16,11 +16,11 @@ class CategoryController extends Controller
         $item =Category::find($id);
         if($item){
 
-        return response()->json(['Category'=>$item], 200);
+        return response()->json(['Category'=>$item,'status' => 200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status' => 404], 404);
     }
     }
 
@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
         $item =Category::all();
 
-        return response()->json(['Category'=>$item], 200);
+        return response()->json(['Category'=>$item,'status' => 200], 200);
     }
 
     public function store(Request $req)
@@ -39,7 +39,7 @@ class CategoryController extends Controller
             'description' => 'required',
             'Is_Active' => 'required',
             'external_code' => 'required',
-            'Is_Default' => 'required',
+
             'Is_Client_Visible' => 'required',
         ]);
 
@@ -54,7 +54,7 @@ class CategoryController extends Controller
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
         $item->external_code=$req->external_code;
-        $item->Is_Default=$req->Is_Default;
+
         $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->save();
         return response()->json(['message'=>'done', 'status' => 200]);
@@ -69,7 +69,7 @@ class CategoryController extends Controller
             'description' => 'required',
             'Is_Active' => 'required',
             'external_code' => 'required',
-            'Is_Default' => 'required',
+
             'Is_Client_Visible' => 'required',
         ]);
 
@@ -86,7 +86,7 @@ class CategoryController extends Controller
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
             $item->external_code=$req->external_code;
-            $item->Is_Default=$req->Is_Default;
+
             $item->Is_Client_Visible=$req->Is_Client_Visible;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);

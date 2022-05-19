@@ -34,12 +34,12 @@ class TicketCloseModelController extends Controller
 
     public function store(Request $req)
     {
-        
+
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
         ]);
 
         if ($validator->fails()) {
@@ -52,18 +52,18 @@ class TicketCloseModelController extends Controller
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-        $item->Is_Defaults=$req->Is_Defaults;
+
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
         }
 }
     public function update(Request $req,$id)
-    {        
+    {
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-            'Is_Defaults' => 'required',
+
         ]);
 
         if ($validator->fails()) {
@@ -78,7 +78,7 @@ class TicketCloseModelController extends Controller
             $item->name=$req->name;
             $item->description=$req->description;
             $item->Is_Active=$req->Is_Active;
-            $item->Is_Defaults=$req->Is_Defaults;
+
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }
