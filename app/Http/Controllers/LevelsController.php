@@ -37,7 +37,7 @@ class LevelsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-
+            'color' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -50,7 +50,7 @@ class LevelsController extends Controller
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-
+        $item->color=$req->color;
         $item->save();
         return response()->json(['message'=>'done','status' => 200]);
 
@@ -62,7 +62,7 @@ class LevelsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'Is_Active' => 'required',
-
+            'color' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -78,7 +78,7 @@ class LevelsController extends Controller
         $item->name=$req->name;
         $item->description=$req->description;
         $item->Is_Active=$req->Is_Active;
-
+        $item->color=$req->color;
         $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }

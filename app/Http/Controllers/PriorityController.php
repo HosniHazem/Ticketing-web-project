@@ -16,11 +16,11 @@ class PriorityController extends Controller
         $item =Priority::find($id);
         if($item){
 
-        return response()->json(['Priority'=>$item], 200);
+        return response()->json(['Priority'=>$item,'status' => 200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status' => 200], 404);
     }
     }
 
@@ -29,7 +29,7 @@ class PriorityController extends Controller
 
         $item =Priority::all();
 
-        return response()->json(['Priority'=>$item], 200);
+        return response()->json(['Priority'=>$item,'status' => 200], 200);
     }
 
     public function store(Request $req)
