@@ -36,11 +36,11 @@ use App\Http\Controllers\JWTController;
 |
 */
 //Route::middleware(['auth','isAdmin'])->group(function() {
-    Route::get('{id}/show', [TicketController::class,'show']);
+    Route::get('Tickets/{id}/show', [TicketController::class,'show']);
     Route::get('Tickets', [TicketController::class,'index']);
-    Route::delete('{id}/delete', [TicketController::class,'destroy']);
-    Route::put('{id}/update', [TicketController::class,'update']);
-    Route::post('/create',[TicketController::class,'store']);
+    Route::delete('Tickets/{id}/delete', [TicketController::class,'destroy']);
+    Route::put('Tickets/{id}/update', [TicketController::class,'update']);
+    Route::post('Tickets/create',[TicketController::class,'store']);
 //});
 ///Category:
 Route::get('Category/{id}/show', [CategoryController::class,'show']);
