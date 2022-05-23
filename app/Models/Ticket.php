@@ -25,10 +25,7 @@ class Ticket extends Model
     {
         return $this->belongsTo('App\Impacts');
     }
-    public function ticket_attachments() //1
-    {
-        return $this->hasMany('App\TicketAttachements');
-    }
+
     public function urgency() //*
     {
         return $this->belongsTo('App\Urgency');
