@@ -26,20 +26,34 @@ class TicketController extends Controller
     {
         if($item){
 
-        return response()->json(['level'=>$item3->name,'impact'=>$item4->name,'Urgency'=>$item5->name,'priority'=>$item6->name,'request_type'=>$item7->name,'ticket_models'=>$item10->name,'category'=>$item11->name,'departments'=>$item13->Name,'status'=>$item15->name,'subject'=>$item->Subject,'Description'=>$item->Description,'estimated_time'=>$item->EstimatedTime,'due_time'=>$item->DueDate,'solution_description'=>$item->SolutionDescription,'attachment'=>$item2->file_size], 200);
+        return response()->json(['Ticket'=>$item,'status' => 200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status' => 404], 404);
     }
     }
+
+
+
+
+    public function priority()
+    {
+        $priority = Priority::all();
+        return response()->json([
+            'status' => 200,
+            'priority' => $priority,
+        ]);
+    }
+
+
 
     public function index()
     {
 
-        $item =Ticket::all();
+        $item =Ticket::with('priority')->get();
 
-        return response()->json(['Ticket'=>$item], 200);
+        return response()->json(['Ticket'=>$item,'status' => 200], 200);
     }
 
     public function store(Request $req)
@@ -51,8 +65,10 @@ class TicketController extends Controller
         $item->RequestTypeID=$req->RequestTypeID;
         $item->EstimatedTime=$req->EstimatedTime;
         $item->StatusID=$req->StatusID;
+        $item->PriorityID=$req->PriorityID;
         $item->UrgentID=$req->UrgentID;
         $item->CategoryID=$req->CategoryID;
+        $item->SubCategoryID=$req->SubCategoryID;
         $item->CreatedUser=$req->CreatedUser;
         $item->UpdatedUser=$req->UpdatedUser;
         $item->RequestedUser=$req->RequestedUser;
@@ -66,7 +82,7 @@ class TicketController extends Controller
 
 
         $item->save();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200], 200);
     }
     public function update(Request $req,$id)
     {
@@ -81,6 +97,7 @@ class TicketController extends Controller
             $item->StatusID=$req->StatusID;
             $item->UrgentID=$req->UrgentID;
             $item->CategoryID=$req->CategoryID;
+            $item->SubCategoryID=$req->SubCategoryID;
             $item->CreatedUser=$req->CreatedUser;
             $item->UpdatedUser=$req->UpdatedUser;
             $item->RequestedUser=$req->RequestedUser;
@@ -88,16 +105,17 @@ class TicketController extends Controller
             $item->AssignedDate=$req->AssignedDate;
             $item->TicketAttachment=$req->TicketAttachment;
             $item->AssignedUser=$req->AssignedUser;
+            $item->PriorityID=$req->PriorityID;
             $item->LevelID=$req->LevelID;
             $item->DueDate=$req->DueDate;
             $item->SolutionDescription=$req->SolutionDescription;
 
             $item->update();
-        return response()->json(['message'=>'done'], 200);
+        return response()->json(['message'=>'done','status' => 200], 200);
                 }
                 else
                 {
-                return response()->json(['message'=>'not done'], 404);
+                return response()->json(['message'=>'not done','status' => 404], 404);
                 }
     }
     public function destroy($id)
@@ -107,11 +125,11 @@ class TicketController extends Controller
 
         if($item){
         $item->delete();
-        return response()->json(['message'=>'deleted'], 200);
+        return response()->json(['message'=>'deleted','status' => 200], 200);
                 }
                 else
                 {
-                return response()->json(['message'=>'not deleted'], 404);
+                return response()->json(['message'=>'not deleted','status' => 404], 404);
                 }
     }
 }

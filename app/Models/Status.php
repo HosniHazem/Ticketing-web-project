@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Status;
 
 class Status extends Model
 {
@@ -11,6 +12,6 @@ class Status extends Model
     protected  $table='status';
     public function tickets()
     {
-        return $this->hasMany('App\Ticket');
+        return $this->hasMany('App\Models\Ticket');
     }
 }

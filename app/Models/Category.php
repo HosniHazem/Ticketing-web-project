@@ -10,10 +10,10 @@ class Category extends Model
     use HasFactory;
     protected  $table='category';
 
-    /*public function tickets()
+    public function tickets()
     {
         return $this->hasMany('App\Ticket');
-    }*/
+    }
     public function category_members() //*
     {
         return $this->belongsTo('App\CategoryMembers');

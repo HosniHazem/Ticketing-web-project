@@ -27,6 +27,8 @@ class CreateTicketsTable extends Migration
             $table->foreign('UrgentID')->references('id')->on('urgency')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('CategoryID')->unsigned()->nullable();
             $table->foreign('CategoryID')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->integer('SubCategoryID')->unsigned()->nullable();
+            $table->foreign('SubCategoryID')->references('id')->on('sub_category')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('ImpactID')->unsigned()->nullable();
             $table->foreign('ImpactID')->references('id')->on('impacts')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('DepartmentID')->unsigned()->nullable();
@@ -44,7 +46,7 @@ class CreateTicketsTable extends Migration
             $table->datetime("AssignedDate")->nullable();
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
-            $table->String("TicketAttachment");
+            $table->String("TicketAttachment")->nullable();;
             $table->integer("IPAddress")->nullable();
             $table->datetime("ClosedDate")->nullable();
             $table->integer('TicketCloseModelID')->unsigned()->nullable();

@@ -4,66 +4,68 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Priority;
 
 class Ticket extends Model
 {
     use HasFactory;
     protected  $table='tickets';
-    protected  $fillable=['DisplayTicketID','Subject','Description','ImpactID'];
+    protected $with =['priority'];
+
 
 
     /*'RequestTypeID','StatusID','PriorityID','UrgentID','CategoryID','SubCategoryID','ItemID','ImpactID','DepartmentID','LevelID','LocationID','TicketModeID','CreatedUser','UpdatedUser','CreatedDate','UpdatedDate','RequestedUser','AssignedUser','AssignedDate','DueDate','SolutionDescription','IPAddress','ClosedDate','TicketCloseModelID','StatusCloseReason','Is_FCR','Is_Active','TicketStatusMessage','EstimatedTime','SpentTime','Is_Validate_EstimatedTime'*/
     public function comments()
     {
-        return $this->hasMany('App\Comments');
+        return $this->hasMany('App\Models\Comments');
     }
     public function levels()
     {
-        return $this->belongsTo('App\Levels');
+        return $this->belongsTo('App\Models\Levels');
     }
     public function impacts()
     {
-        return $this->belongsTo('App\Impacts');
+        return $this->belongsTo('App\Models\Impacts');
     }
 
     public function urgency() //*
     {
-        return $this->belongsTo('App\Urgency');
+        return $this->belongsTo('App\Models\Urgency');
     }
     public function priority() //*
     {
-        return $this->belongsTo('App\Priority');
+        return $this->belongsTo('App\Models\Priority');
     }
     public function request_types() //*
     {
-        return $this->belongsTo('App\Request_type');
+        return $this->belongsTo('App\Models\Request_type');
     }
     public function ticket_models() //*
     {
-        return $this->belongsTo('App\TicketModels');
+        return $this->belongsTo('App\Models\TicketModels');
     }
     public function category() //*
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Models\Category');
     }
     public function User() //*
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
     public function status() //*
     {
-        return $this->belongsTo('App\Status');
+        return $this->belongsTo('App\Models\Status');
     }
     public function locations() //*
     {
-        return $this->belongsTo('App\Locations');
+        return $this->belongsTo('App\Models\Locations');
     }
     public function ticket_close_models() //*
     {
-        return $this->belongsTo('App\TicketCloseModel');
+        return $this->belongsTo('App\Models\TicketCloseModel');
     }
     public function departments() //*
     {
-        return $this->belongsTo('App\Departments');
+        return $this->belongsTo('App\Models\Departments');
     }
 }
