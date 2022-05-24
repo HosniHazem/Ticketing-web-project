@@ -24,6 +24,7 @@ use App\Http\Controllers\CategoryMembersController;
 use App\Http\Controllers\TicketCloseModelController;
 use App\Http\Controllers\TicketAttachementsController;
 use App\Http\Controllers\JWTController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -176,8 +177,15 @@ Route::put('User/{id}/update', [UserController::class,'update']);
 Route::post('User/create',[UserController::class,'store']);
 ///////
 
+    
+Route::post('/sample-restful-apis', [ProfileController::class, 'uploadimage'])->name('sample-restful-apis');
 
+Route::put('/profile/update-profile',[ProfileController::class,'update_profile']);
+Route::put('/user/{id}', [ProfileController::class, 'update'])->middleware('auth:sanctum');;
 
+Route::get('/user', [ProfileController::class, 'show']);
+
+Route::put('/user/{id}', [AuthController::class, 'update'])->middleware('auth:sanctum');;
 
 
 // Search

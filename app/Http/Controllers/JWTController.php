@@ -93,4 +93,5 @@ class JWTController extends Controller
             'user' => auth()->user()
         ]);
     }
+    
 }

@@ -21,10 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role_id')->unsigned()->nullable();
             $table->foreign('role_id')->nullable()->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->string('display_name');
-            $table->string('user_name');;
             $table->integer('phone_no');
-            $table->integer('cell_phone_no');
             $table->string('city');
             $table->string('state');
             $table->string('country');
@@ -35,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('organization');
             $table->string('Is_Sendmail_Password');
             $table->string('description');
-            $table->binary('profile_picture');
+            $table->string('profile_picture');
             $table->string('Is_Active');
             $table->integer('external_code');
             $table->integer('company_id');
