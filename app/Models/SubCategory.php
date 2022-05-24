@@ -11,10 +11,10 @@ class SubCategory extends Model
     use HasFactory;
     protected  $table='sub_category';
     protected $with =['category'];
-    /*public function tickets()
+    public function tickets()
     {
-        return $this->hasMany('App\Ticket');
-    }*/
+        return $this->hasMany('App\models\Ticket');
+    }
     public function category() //*
     {
         return $this->belongsTo('App\Models\Category');

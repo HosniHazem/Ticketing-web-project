@@ -15,7 +15,6 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('DisplayTicketID')->nullable();
             $table->String('Subject');
             $table->String('Description');
             $table->integer('RequestTypeID')->unsigned()->nullable();
@@ -28,6 +27,8 @@ class CreateTicketsTable extends Migration
             $table->foreign('UrgentID')->references('id')->on('urgency')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('CategoryID')->unsigned()->nullable();
             $table->foreign('CategoryID')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->integer('SubCategoryID')->unsigned()->nullable();
+            $table->foreign('SubCategoryID')->references('id')->on('sub_category')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->integer('ImpactID')->unsigned()->nullable();
             $table->foreign('ImpactID')->references('id')->on('impacts')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('DepartmentID')->unsigned()->nullable();
@@ -45,13 +46,14 @@ class CreateTicketsTable extends Migration
             $table->datetime("AssignedDate")->nullable();
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
+            $table->String("TicketAttachment")->nullable();;
             $table->integer("IPAddress")->nullable();
             $table->datetime("ClosedDate")->nullable();
             $table->integer('TicketCloseModelID')->unsigned()->nullable();
             $table->foreign('TicketCloseModelID')->references('id')->on('ticket_close_models')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->String("StatusCloseReason");
-            $table->boolean("Is_FCR")->nullable();
-            $table->boolean("Is_Active")->nullable();
+            $table->String("StatusCloseReason")->nullable();
+            $table->String("Is_FCR")->nullable();
+            $table->String("Is_Active")->nullable();
             $table->String("TicketStatusMessage")->nullable();
             $table->datetime("EstimatedTime");
             $table->datetime("SpentTime")->nullable();
