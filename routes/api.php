@@ -39,6 +39,8 @@ use App\Http\Controllers\ProfileController;
 //Route::middleware(['auth','isAdmin'])->group(function() {
     Route::get('Tickets/{id}/show', [TicketController::class,'show']);
     Route::get('Tickets', [TicketController::class,'index']);
+    Route::get('priority', [TicketController::class,'priority']);
+
     Route::delete('Tickets/{id}/delete', [TicketController::class,'destroy']);
     Route::put('Tickets/{id}/update', [TicketController::class,'update']);
     Route::post('Tickets/create',[TicketController::class,'store']);

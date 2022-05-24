@@ -8,10 +8,16 @@ use App\Models\Ticket;
 
 class Priority extends Model
 {
-    use HasFactory;
-    protected  $table='priority';
+    protected $table = 'priority' ;
+    protected $fillable = [
+        'name',
+     
 
-    public function tickets()
+
+    ];
+    use HasFactory;
+
+    public function ticket()
     {
         return $this->hasMany('App\Models\Ticket');
     }

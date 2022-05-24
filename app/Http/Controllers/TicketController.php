@@ -19,6 +19,7 @@ use App\Models\TicketModels;
 use Illuminate\Http\Request;
 use App\Models\TicketCloseModel;
 use App\Models\TicketAttachements;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -37,6 +38,7 @@ class TicketController extends Controller
 
 
 
+ 
     public function priority()
     {
         $priority = Priority::all();
@@ -47,13 +49,22 @@ class TicketController extends Controller
     }
 
 
-
     public function index()
     {
+        $item = Ticket::with('priority');
+       
 
-        $item =Ticket::with('priority')->get();
-
-        return response()->json(['Ticket'=>$item,'status' => 200], 200);
+        if ($item) {
+            return response()->json([
+                'status' => 200,
+                'ticket' => $item->get()
+            ]);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Aucune ticket trouvé',
+            ]);
+        }
     }
 
     public function store(Request $req)

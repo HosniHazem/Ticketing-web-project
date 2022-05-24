@@ -4,15 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Priority;
+
 
 class Ticket extends Model
 {
-    use HasFactory;
     protected  $table='tickets';
+
     protected $with =['priority'];
 
-
+    protected $fillable = [
+        'Subject',
+        'Description',
+        'PriorityID',
+        'CreatedUser',
+        'UpdatedUser',
+        'AssignedUser',
+        'AssignedDate',
+        'SolutionDescription',
+        'TicketAttachment',
+        'IPAddress',
+        'ClosedDate',
+        'StatusCloseReason',
+        'Is_FCR',
+        'DueDate',
+        'IPAddress',
+        'Is_Active',
+        'TicketStatusMessage',
+        'EstimatedTime',
+        'Is_Validate_EstimatedTime',
+    ];
+    use HasFactory;
 
     /*'RequestTypeID','StatusID','PriorityID','UrgentID','CategoryID','SubCategoryID','ItemID','ImpactID','DepartmentID','LevelID','LocationID','TicketModeID','CreatedUser','UpdatedUser','CreatedDate','UpdatedDate','RequestedUser','AssignedUser','AssignedDate','DueDate','SolutionDescription','IPAddress','ClosedDate','TicketCloseModelID','StatusCloseReason','Is_FCR','Is_Active','TicketStatusMessage','EstimatedTime','SpentTime','Is_Validate_EstimatedTime'*/
     public function comments()
@@ -34,7 +55,7 @@ class Ticket extends Model
     }
     public function priority() //*
     {
-        return $this->belongsTo('App\Models\Priority');
+        return $this->belongsTo(Priority::class,'PriorityID','id');
     }
     public function request_types() //*
     {
