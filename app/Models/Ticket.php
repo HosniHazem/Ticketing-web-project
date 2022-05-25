@@ -32,6 +32,7 @@ class Ticket extends Model
         'Is_Active',
         'TicketStatusMessage',
         'EstimatedTime',
+        'EstimatedDate',
         'Is_Validate_EstimatedTime',
     ];
     use HasFactory;
@@ -47,7 +48,7 @@ class Ticket extends Model
     }
     public function users()
     {
-        return $this->belongsTo(User::class,'RequestedUser','id');
+        return $this->belongsTo(User::class,'AssignedUser','id');
     }
     public function impacts()
     {
@@ -73,10 +74,6 @@ class Ticket extends Model
     public function category() //*
     {
         return $this->belongsTo('App\Models\Category');
-    }
-    public function User() //*
-    {
-        return $this->belongsTo('App\Models\User');
     }
     public function status() //*
     {
