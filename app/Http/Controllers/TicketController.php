@@ -65,6 +65,15 @@ class TicketController extends Controller
         ]);
     }
 
+    public function users()
+    {
+        $users = User::all();
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+        ]);
+    }
+
     public function index()
     {
         $item = Ticket::with('priority')->with('levels')->with('status');

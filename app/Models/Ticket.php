@@ -45,6 +45,10 @@ class Ticket extends Model
     {
         return $this->belongsTo(Levels::class,'LevelID','id');
     }
+    public function users()
+    {
+        return $this->belongsTo(User::class,'RequestedUser','id');
+    }
     public function impacts()
     {
         return $this->belongsTo('App\Models\Impacts');
