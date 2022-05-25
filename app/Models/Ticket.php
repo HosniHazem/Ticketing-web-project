@@ -10,7 +10,8 @@ class Ticket extends Model
 {
     protected  $table='tickets';
 
-    protected $with =['priority'];
+    protected $with =['priority','levels','status'];
+
 
     protected $fillable = [
         'Subject',
@@ -42,7 +43,7 @@ class Ticket extends Model
     }
     public function levels()
     {
-        return $this->belongsTo('App\Models\Levels');
+        return $this->belongsTo(Levels::class,'LevelID','id');
     }
     public function impacts()
     {
@@ -75,7 +76,7 @@ class Ticket extends Model
     }
     public function status() //*
     {
-        return $this->belongsTo('App\Models\Status');
+        return $this->belongsTo(Status::class,'StatusID','id');
     }
     public function locations() //*
     {

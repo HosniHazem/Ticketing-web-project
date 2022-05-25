@@ -9,12 +9,7 @@ use App\Models\Ticket;
 class Priority extends Model
 {
     protected $table = 'priority' ;
-    protected $fillable = [
-        'name',
-     
 
-
-    ];
     use HasFactory;
 
     public function ticket()

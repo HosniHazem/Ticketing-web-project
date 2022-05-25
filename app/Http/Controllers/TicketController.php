@@ -38,7 +38,7 @@ class TicketController extends Controller
 
 
 
- 
+
     public function priority()
     {
         $priority = Priority::all();
@@ -47,17 +47,33 @@ class TicketController extends Controller
             'priority' => $priority,
         ]);
     }
+    public function levels()
+    {
+        $levels = Levels::all();
+        return response()->json([
+            'status' => 200,
+            'levels' => $levels,
+        ]);
+    }
 
+    public function status()
+    {
+        $status = Status::all();
+        return response()->json([
+            'status' => 200,
+            'status' => $status,
+        ]);
+    }
 
     public function index()
     {
-        $item = Ticket::with('priority');
-       
+        $item = Ticket::with('priority')->with('levels')->with('status');
+
 
         if ($item) {
             return response()->json([
                 'status' => 200,
-                'ticket' => $item->get()
+                'Ticket' => $item->get()
             ]);
         } else {
             return response()->json([
