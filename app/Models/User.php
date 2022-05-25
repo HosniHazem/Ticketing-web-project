@@ -12,7 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected  $table='status';
+    protected  $table='users';
     public function tickets()
     {
         return $this->hasMany('App\Models\Ticket');

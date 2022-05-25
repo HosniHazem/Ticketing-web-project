@@ -25,6 +25,7 @@ class TicketController extends Controller
 {
     public function show($id)
     {
+        $item =Ticket::find($id);
         if($item){
 
         return response()->json(['Ticket'=>$item,'status' => 200], 200);
@@ -59,6 +60,7 @@ class TicketController extends Controller
     public function status()
     {
         $status = Status::all();
+
         return response()->json([
             'status' => 200,
             'status' => $status,
@@ -67,22 +69,29 @@ class TicketController extends Controller
 
     public function users()
     {
+
         $users = User::all();
+
         return response()->json([
             'status' => 200,
             'users' => $users,
+
         ]);
     }
 
     public function index()
     {
-        $item = Ticket::with('priority')->with('levels')->with('status');
+
+
+
+        $item = Ticket::with('priority')->with('levels')->with('status')->with('users');
 
 
         if ($item) {
             return response()->json([
                 'status' => 200,
-                'Ticket' => $item->get()
+                'Ticket' => $item->get(),
+
             ]);
         } else {
             return response()->json([
@@ -100,6 +109,7 @@ class TicketController extends Controller
         $item->Description=$req->Description;
         $item->RequestTypeID=$req->RequestTypeID;
         $item->EstimatedTime=$req->EstimatedTime;
+        $item->EstimatedDate=$req->EstimatedDate;
         $item->StatusID=$req->StatusID;
         $item->PriorityID=$req->PriorityID;
         $item->UrgentID=$req->UrgentID;
@@ -130,6 +140,7 @@ class TicketController extends Controller
             $item->Description=$req->Description;
             $item->RequestTypeID=$req->RequestTypeID;
             $item->EstimatedTime=$req->EstimatedTime;
+            $item->EstimatedDate=$req->EstimatedDate;
             $item->StatusID=$req->StatusID;
             $item->UrgentID=$req->UrgentID;
             $item->CategoryID=$req->CategoryID;

@@ -40,11 +40,10 @@ class CreateTicketsTable extends Migration
             $table->integer('TicketModeID')->unsigned()->nullable();
             $table->foreign('TicketModeID')->references('id')->on('ticket_models')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->String("CreatedUser")->nullable();
-            $table->integer('RequestedUser')->unsigned()->nullable();
-            $table->foreign('RequestedUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->String('RequestedUser');
             $table->String("UpdatedUser")->nullable();
             $table->integer('AssignedUser')->unsigned()->nullable();
-            $table->foreign('AssignedUser')->references('id')->on('agent')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreign('AssignedUser')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->datetime("AssignedDate")->nullable();
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
@@ -57,7 +56,8 @@ class CreateTicketsTable extends Migration
             $table->String("Is_FCR")->nullable();
             $table->String("Is_Active")->nullable();
             $table->String("TicketStatusMessage")->nullable();
-            $table->datetime("EstimatedTime");
+            $table->String("EstimatedTime");
+            $table->String("EstimatedDate");
             $table->datetime("SpentTime")->nullable();
             $table->boolean("Is_Validate_EstimatedTime")->nullable();
             $table->timestamps();
