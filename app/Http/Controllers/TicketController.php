@@ -37,7 +37,23 @@ class TicketController extends Controller
     }
 
 
+    public function uploadimage(Request $request)
+    {
 
+
+
+            $file      = $request->file('attach');
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $picture   = $filename;
+            //move image to public/img folder
+            $file->move(public_path('images/uploads'), $picture);
+            return response()->json(["message" => "Image Uploaded Succesfully",'status' => 200]);
+
+
+
+
+    }
 
 
     public function priority()
@@ -120,7 +136,7 @@ class TicketController extends Controller
         $item->RequestedUser=$req->RequestedUser;
         $item->AssignedUser=$req->AssignedUser;
         $item->AssignedDate=$req->AssignedDate;
-        $item->TicketAttachment=$req->TicketAttachment;
+        $item->attach=$req->attach;
         $item->AssignedUser=$req->AssignedUser;
         $item->LevelID=$req->LevelID;
         $item->DueDate=$req->DueDate;
@@ -150,7 +166,7 @@ class TicketController extends Controller
             $item->RequestedUser=$req->RequestedUser;
             $item->AssignedUser=$req->AssignedUser;
             $item->AssignedDate=$req->AssignedDate;
-            $item->TicketAttachment=$req->TicketAttachment;
+            $item->attach=$req->attach;
             $item->AssignedUser=$req->AssignedUser;
             $item->PriorityID=$req->PriorityID;
             $item->LevelID=$req->LevelID;

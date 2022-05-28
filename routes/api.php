@@ -45,6 +45,10 @@ use App\Http\Controllers\ProfileController;
     Route::put('Tickets/{id}/update', [TicketController::class,'update']);
     Route::post('Tickets/create',[TicketController::class,'store']);
 //});
+
+Route::post('/image', [TicketController::class,'uploadimage'])->name('image');
+Route::post('/imageProfil', [UserController::class,'uploadimage'])->name('image');
+
 ///Category:
 Route::get('Category/{id}/show', [CategoryController::class,'show']);
     Route::get('Category', [CategoryController::class,'index']);
@@ -179,7 +183,7 @@ Route::put('User/{id}/update', [UserController::class,'update']);
 Route::post('User/create',[UserController::class,'store']);
 ///////
 
-    
+
 Route::post('/sample-restful-apis', [ProfileController::class, 'uploadimage'])->name('sample-restful-apis');
 
 Route::put('/profile/update-profile',[ProfileController::class,'update_profile']);

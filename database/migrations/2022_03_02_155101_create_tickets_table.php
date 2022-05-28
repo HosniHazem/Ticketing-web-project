@@ -47,7 +47,7 @@ class CreateTicketsTable extends Migration
             $table->datetime("AssignedDate")->nullable();
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
-            $table->String("TicketAttachment")->nullable();;
+            $table->String("attach")->nullable();
             $table->integer("IPAddress")->nullable();
             $table->datetime("ClosedDate")->nullable();
             $table->integer('TicketCloseModelID')->unsigned()->nullable();
