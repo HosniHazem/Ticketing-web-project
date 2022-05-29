@@ -23,38 +23,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
-    public function show($id)
-    {
-        $item =Ticket::find($id);
-        if($item){
-
-        return response()->json(['Ticket'=>$item,'status' => 200], 200);
-        }
-    else
-    {
-    return response()->json(['message'=>'not found','status' => 404], 404);
-    }
-    }
-
-
-    public function uploadimage(Request $request)
-    {
-
-
-
-            $file      = $request->file('attach');
-            $filename  = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $picture   = $filename;
-            //move image to public/img folder
-            $file->move(public_path('images/uploads'), $picture);
-            return response()->json(["message" => "Image Uploaded Succesfully",'status' => 200]);
-
-
-
-
-    }
-
 
     public function priority()
     {
@@ -94,6 +62,40 @@ class TicketController extends Controller
 
         ]);
     }
+
+    public function show($id)
+    {
+        $item =Ticket::find($id);
+        if($item){
+
+        return response()->json(['Ticket'=>$item,'status' => 200], 200);
+        }
+    else
+    {
+    return response()->json(['message'=>'not found','status' => 404], 404);
+    }
+    }
+
+
+    public function uploadimage(Request $request)
+    {
+
+
+
+            $file      = $request->file('attach');
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $picture   = $filename;
+            //move image to public/img folder
+            $file->move(public_path('images/uploads'), $picture);
+            return response()->json(["message" => "Image Uploaded Succesfully",'status' => 200]);
+
+
+
+
+    }
+
+
 
     public function index()
     {
