@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 
 use Validator;
@@ -71,8 +71,10 @@ $interface_model = '\App\Models\\' . $model;
     ],400);  
  }
  /*
- $user->password=Hash::make($request->input('password'));*/
+*/
+$user->password=Hash::make($request->input('password'));
  $password = Str::random(8);
+ 
  $user->password = $password ;
  $user->save();
  //$user->tokens()->delete();

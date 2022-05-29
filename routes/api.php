@@ -1,7 +1,8 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Sanctum\AuthController;
+use App\Http\Controllers\RestPassword;
+use App\Http\Controllers\JWTController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemsController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UrgencyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentsController;
@@ -19,12 +21,11 @@ use App\Http\Controllers\RequestTypeController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\TicketModelController;
 use App\Http\Controllers\DepartementsController;
+use App\Http\Controllers\Sanctum\AuthController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\CategoryMembersController;
 use App\Http\Controllers\TicketCloseModelController;
 use App\Http\Controllers\TicketAttachementsController;
-use App\Http\Controllers\JWTController;
-use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,8 @@ use App\Http\Controllers\ProfileController;
 |
 */
 //Route::middleware(['auth','isAdmin'])->group(function() {
-    Route::post('/forget', [App\Http\Controllers\API\RestPassword::class, 'forgetpassword']);
-Route::post('/reset', [App\Http\Controllers\API\RestPassword::class, 'resetPassword']);
+    Route::post('/forget', [RestPassword::class, 'forgetpassword']);
+Route::post('/reset', [RestPassword::class, 'resetPassword']);
     Route::get('Tickets/{id}/show', [TicketController::class,'show']);
     Route::get('Tickets', [TicketController::class,'index']);
     Route::get('priority', [TicketController::class,'priority']);
@@ -47,10 +48,6 @@ Route::post('/reset', [App\Http\Controllers\API\RestPassword::class, 'resetPassw
     Route::put('Tickets/{id}/update', [TicketController::class,'update']);
     Route::post('Tickets/create',[TicketController::class,'store']);
 //});
-
-Route::post('/image', [TicketController::class,'uploadimage'])->name('image');
-Route::post('/imageProfil', [UserController::class,'uploadimage'])->name('image');
-
 ///Category:
 Route::get('Category/{id}/show', [CategoryController::class,'show']);
     Route::get('Category', [CategoryController::class,'index']);
@@ -185,7 +182,7 @@ Route::put('User/{id}/update', [UserController::class,'update']);
 Route::post('User/create',[UserController::class,'store']);
 ///////
 
-
+    
 Route::post('/sample-restful-apis', [ProfileController::class, 'uploadimage'])->name('sample-restful-apis');
 
 Route::put('/profile/update-profile',[ProfileController::class,'update_profile']);
