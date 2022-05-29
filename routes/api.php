@@ -37,6 +37,8 @@ use App\Http\Controllers\ProfileController;
 |
 */
 //Route::middleware(['auth','isAdmin'])->group(function() {
+    Route::post('/forget', [App\Http\Controllers\API\RestPassword::class, 'forgetpassword']);
+Route::post('/reset', [App\Http\Controllers\API\RestPassword::class, 'resetPassword']);
     Route::get('Tickets/{id}/show', [TicketController::class,'show']);
     Route::get('Tickets', [TicketController::class,'index']);
     Route::get('priority', [TicketController::class,'priority']);
