@@ -25,6 +25,7 @@ class TicketController extends Controller
 {
     public function show($id)
     {
+        $item =Ticket::find($id);
         if($item){
 
         return response()->json(['Ticket'=>$item,'status' => 200], 200);
@@ -36,9 +37,25 @@ class TicketController extends Controller
     }
 
 
+    public function uploadimage(Request $request)
+    {
 
 
- 
+
+            $file      = $request->file('attach');
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $picture   = $filename;
+            //move image to public/img folder
+            $file->move(public_path('images/uploads'), $picture);
+            return response()->json(["message" => "Image Uploaded Succesfully",'status' => 200]);
+
+
+
+
+    }
+
+
     public function priority()
     {
         $priority = Priority::all();
@@ -47,17 +64,50 @@ class TicketController extends Controller
             'priority' => $priority,
         ]);
     }
+    public function levels()
+    {
+        $levels = Levels::all();
+        return response()->json([
+            'status' => 200,
+            'levels' => $levels,
+        ]);
+    }
 
+    public function status()
+    {
+        $status = Status::all();
+
+        return response()->json([
+            'status' => 200,
+            'status' => $status,
+        ]);
+    }
+
+    public function users()
+    {
+
+        $users = User::all();
+
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+
+        ]);
+    }
 
     public function index()
     {
-        $item = Ticket::with('priority');
-       
+
+
+
+        $item = Ticket::with('priority')->with('levels')->with('status')->with('users');
+
 
         if ($item) {
             return response()->json([
                 'status' => 200,
-                'ticket' => $item->get()
+                'Ticket' => $item->get(),
+
             ]);
         } else {
             return response()->json([
@@ -75,6 +125,7 @@ class TicketController extends Controller
         $item->Description=$req->Description;
         $item->RequestTypeID=$req->RequestTypeID;
         $item->EstimatedTime=$req->EstimatedTime;
+        $item->EstimatedDate=$req->EstimatedDate;
         $item->StatusID=$req->StatusID;
         $item->PriorityID=$req->PriorityID;
         $item->UrgentID=$req->UrgentID;
@@ -85,7 +136,7 @@ class TicketController extends Controller
         $item->RequestedUser=$req->RequestedUser;
         $item->AssignedUser=$req->AssignedUser;
         $item->AssignedDate=$req->AssignedDate;
-        $item->TicketAttachment=$req->TicketAttachment;
+        $item->attach=$req->attach;
         $item->AssignedUser=$req->AssignedUser;
         $item->LevelID=$req->LevelID;
         $item->DueDate=$req->DueDate;
@@ -105,6 +156,7 @@ class TicketController extends Controller
             $item->Description=$req->Description;
             $item->RequestTypeID=$req->RequestTypeID;
             $item->EstimatedTime=$req->EstimatedTime;
+            $item->EstimatedDate=$req->EstimatedDate;
             $item->StatusID=$req->StatusID;
             $item->UrgentID=$req->UrgentID;
             $item->CategoryID=$req->CategoryID;
@@ -114,7 +166,7 @@ class TicketController extends Controller
             $item->RequestedUser=$req->RequestedUser;
             $item->AssignedUser=$req->AssignedUser;
             $item->AssignedDate=$req->AssignedDate;
-            $item->TicketAttachment=$req->TicketAttachment;
+            $item->attach=$req->attach;
             $item->AssignedUser=$req->AssignedUser;
             $item->PriorityID=$req->PriorityID;
             $item->LevelID=$req->LevelID;
