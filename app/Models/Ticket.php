@@ -10,7 +10,7 @@ class Ticket extends Model
 {
     protected  $table='tickets';
 
-    protected $with =['priority','levels','status'];
+    protected $with =['priority','levels','status','request_types','category','users','sub_category'];
 
 
     protected $fillable = [
@@ -65,7 +65,7 @@ class Ticket extends Model
     }
     public function request_types() //*
     {
-        return $this->belongsTo('App\Models\Request_type');
+        return $this->belongsTo(Request_type::class,'RequestTypeID','id');
     }
     public function ticket_models() //*
     {
@@ -73,7 +73,11 @@ class Ticket extends Model
     }
     public function category() //*
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class,'CategoryID','id');
+    }
+    public function sub_category() //*
+    {
+        return $this->belongsTo(SubCategory::class,'SubCategoryID','id');
     }
     public function status() //*
     {

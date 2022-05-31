@@ -63,6 +63,40 @@ class TicketController extends Controller
         ]);
     }
 
+    public function category()
+    {
+
+        $category = Category::all();
+
+        return response()->json([
+            'status' => 200,
+            'category' => $category,
+
+        ]);
+    }
+    public function sub_category()
+    {
+
+        $sub_category = SubCategory::all();
+
+        return response()->json([
+            'status' => 200,
+            'sub_category' => $sub_category,
+
+        ]);
+    }
+    public function request_types()
+    {
+
+        $request_types = Request_type::all();
+
+        return response()->json([
+            'status' => 200,
+            'request_types' => $request_types,
+
+        ]);
+    }
+
     public function show($id)
     {
         $item =Ticket::find($id);
@@ -102,7 +136,7 @@ class TicketController extends Controller
 
 
 
-        $item = Ticket::with('priority')->with('levels')->with('status')->with('users');
+        $item = Ticket::with('priority')->with('levels')->with('status')->with('users')->with('category')->with('request_types')->with('sub_category');
 
 
         if ($item) {
