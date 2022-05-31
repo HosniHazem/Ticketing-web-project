@@ -39,7 +39,7 @@ use App\Http\Controllers\TicketAttachementsController;
 */
 //Route::middleware(['auth','isAdmin'])->group(function() {
     Route::post('/forget', [RestPassword::class, 'forgetpassword']);
-Route::post('/reset', [RestPassword::class, 'resetPassword']);
+    Route::post('/reset', [RestPassword::class, 'resetPassword']);
     Route::get('Tickets/{id}/show', [TicketController::class,'show']);
     Route::get('Tickets', [TicketController::class,'index']);
     Route::get('priority', [TicketController::class,'priority']);
@@ -182,15 +182,15 @@ Route::put('User/{id}/update', [UserController::class,'update']);
 Route::post('User/create',[UserController::class,'store']);
 ///////
 
-    
+
 Route::post('/sample-restful-apis', [ProfileController::class, 'uploadimage'])->name('sample-restful-apis');
 
 Route::put('/profile/update-profile',[ProfileController::class,'update_profile']);
-Route::put('/user/{id}', [ProfileController::class, 'update'])->middleware('auth:sanctum');;
+Route::put('/user/{id}', [ProfileController::class, 'update']);
 
 Route::get('/user', [ProfileController::class, 'show']);
 
-Route::put('/user/{id}', [AuthController::class, 'update'])->middleware('auth:sanctum');;
+// Route::put('/user/{id}/update', [AuthController::class, 'update']);
 
 
 // Search

@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $item =Category::find($id);
         if($item){
 
-        return response()->json(['category'=>$item,'status' => 200], 200);
+        return response()->json(['Category'=>$item,'status' => 200], 200);
         }
     else
     {
@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
         $item =Category::all();
 
-        return response()->json(['category'=>$item,'status' => 200], 200);
+        return response()->json(['Category'=>$item,'status' => 200], 200);
     }
 
     public function store(Request $req)

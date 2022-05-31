@@ -19,16 +19,16 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Message;
 class RestPassword extends Controller
 {
-    
+
    public function forgetpassword( Request $request ){
 
     $email= $request->input('email');
     $token= Str::random(12);
-    $salarie= User::where('email','=', $email)->get(); 
+    $salarie= User::where('email','=', $email)->get();
     if($salarie->isEmpty()){
         return  [
             'erreur' => ' Email non trouvé '
-        ]; 
+        ];
      }else{
 
     DB::table('password_resets')->insert([
@@ -37,10 +37,10 @@ class RestPassword extends Controller
         'created_at'=>Carbon::now()
 
     ]);
-    $user= User::where('email','=', $email)->first(); 
-    
+    $user= User::where('email','=', $email)->first();
+
      Mail::send('email.reset_password',['token'=>$token,'user'=>$user],function(message $message) use ($email){
-        $message->subject('rest your password');
+        $message->subject('reset your password');
         $message->to($email);
     } );
 
@@ -53,28 +53,28 @@ class RestPassword extends Controller
  public function resetPassword(Request $request){
 
     $validatedData = $request->validate([
-       
+
         'password' => ['confirmed'],
-       
+
     ]);
-   
+
  $passwordResets = DB::table('password_resets')->where ('token',$request->input('token'))->first();
  //$email=$passwordResets->email;
  //$password = Str::random(8);
  $model = 'User'; //Use the name of the model, not the table name
-$interface_model = '\App\Models\\' . $model; 
- $user=$interface_model::where('email','=', $passwordResets->email)->first(); 
- 
+$interface_model = '\App\Models\\' . $model;
+ $user=$interface_model::where('email','=', $passwordResets->email)->first();
+
  if(!$user){
     return reponse([
         'error'=>'not found'
-    ],400);  
+    ],400);
  }
  /*
 */
 $user->password=Hash::make($request->input('password'));
  $password = Str::random(8);
- 
+
  $user->password = $password ;
  $user->save();
  //$user->tokens()->delete();
@@ -83,7 +83,7 @@ $user->password=Hash::make($request->input('password'));
 // Mail::to($user)->send(new userEmail($user, $validatedData['password']));
 $email=$user->email;
  Mail::send('email.email_password',['password'=>$password,'user'=>$user],function(message $message) use ($email){
-   $message->subject('rest your password');
+   $message->subject('This is your Login info');
    $message->to($email);
 } );
 
@@ -95,4 +95,8 @@ $email=$user->email;
 
  ];
 }
+
+
+
+
 }

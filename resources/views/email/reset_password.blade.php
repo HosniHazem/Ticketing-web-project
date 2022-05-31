@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
 <head>
-    <title>Réinitialisation mot de passe </title>
+    <title>Password Reset </title>
 </head>
 
 <body>
-<h1>Bonjour  {{ $user->name }} {{ $user->firstName }}!</h1>
-Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe.<br>
-<a href='http://localhost:3000/reset/{{$token}}'>Réinitialiser mon mot de passe</a>
+<h1>Good Morning  {{ $user->name }} {{ $user->firstName }}!</h1>
+Please click on the following link to reset your password.<br>
+<a href='http://localhost:3000/reset/{{$token}}'>Reset my password</a>
 
 </body>
 </html>

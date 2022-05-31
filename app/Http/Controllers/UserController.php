@@ -5,7 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-
+use Carbon\carbon;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Str;
+use App\Mail\userEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Message;
 
 class UserController extends Controller
 {
@@ -36,9 +46,6 @@ class UserController extends Controller
             $file->move(public_path('images/uploads'), $picture);
             return response()->json(["message" => "Image Uploaded Succesfully",'status' => 200]);
 
-
-
-
     }
     public function index()
     {
@@ -64,30 +71,29 @@ class UserController extends Controller
                 'validate_err' => $validator->getMessageBag(),
             ]);
         } else {
-        $item =new User();
-       //$item->RoleID=$req->RoleID;
-       $item->name=$req->name;
-       $item->email=$req->email;
-       $item->email_verified_at=$req->email_verified_at;
-       $item->password=$req->password;
+        $user =new User();
+       $user->RoleID=$req->RoleID;
+       $user->name=$req->name;
+       $user->email=$req->email;
+       $user->city=$req->city;
+       $user->phone_no=$req->phone_no;
+       $user->country=$req->country;
+       $user->organization=$req->organization;
+       $user->profile_picture=$req->profile_picture;
+       $user->Is_Active=$req->Is_Active;
+
+       $user->password=Hash::make($req->input('password'));
+       $password = Str::random(8);
+
+       $user->password = $password ;
+      $email=$user->email;
+       Mail::send('email.email_password',['password'=>$password,'user'=>$user],function(message $message) use ($email){
+         $message->subject('This is your Login info');
+         $message->to($email);
+      } );
 
 
-       $item->city=$req->city;
-       $item->state=$req->state;
-       $item->country=$req->country;
-       $item->pin_code=$req->pin_code;
-       $item->job_title=$req->job_title;
-       $item->address=$req->address;
-       $item->time_zone_id=$req->time_zone_id;
-       $item->organization=$req->organization;
-       $item->Is_Sendmail_Password=$req->Is_Sendmail_Password;
-       $item->description=$req->description;
-       $item->profile_picture=$req->profile_picture;
-       $item->Is_Active=$req->Is_Active;
-       $item->external_code=$req->external_code;
-       $item->company_id=$req->company_id;
-
-        $item->save();
+        $user->save();
         return response()->json(['message'=>'done','status' => 200]);
     }
 }
@@ -111,23 +117,12 @@ class UserController extends Controller
 
 
         if($item){
-            //$item->RoleID=$req->RoleID;
+            $item->RoleID=$req->RoleID;
             $item->name=$req->name;
-
-
-
-
             $item->phone_no=$req->phone_no;
             $item->city=$req->city;
-
             $item->country=$req->country;
-
-
-
-
             $item->organization=$req->organization;
-
-
             $item->profile_picture=$req->profile_picture;
             $item->update();
         return response()->json(['message'=>'done','status' => 200]);
