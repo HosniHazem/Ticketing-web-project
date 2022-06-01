@@ -26,11 +26,11 @@ class UserController extends Controller
         $item =User::find($id);
         if($item){
 
-        return response()->json(['User'=>$item], 200);
+        return response()->json(['User'=>$item,'status'=>200], 200);
         }
     else
     {
-    return response()->json(['message'=>'not found'], 404);
+    return response()->json(['message'=>'not found','status'=>404], 404);
     }
     }
     public function uploadimage(Request $request)
@@ -52,7 +52,7 @@ class UserController extends Controller
 
         $item =User::all();
 
-        return response()->json(['User'=>$item], 200);
+        return response()->json(['User'=>$item,'status'=>200], 200);
     }
 
     public function store(Request $req)
@@ -81,6 +81,8 @@ class UserController extends Controller
        $user->organization=$req->organization;
        $user->profile_picture=$req->profile_picture;
        $user->Is_Active=$req->Is_Active;
+       $user->sold_total=$req->sold_total;
+       $user->sold=$req->sold_total;
 
        $user->password=Hash::make($req->input('password'));
        $password = Str::random(8);
@@ -124,6 +126,10 @@ class UserController extends Controller
             $item->country=$req->country;
             $item->organization=$req->organization;
             $item->profile_picture=$req->profile_picture;
+            $item->Is_Active=$req->Is_Active;
+            $item->sold_total=$req->sold_total;
+            $item->sold=$req->sold;
+            $item->sold_consumed=$req->sold_consumed;
             $item->update();
         return response()->json(['message'=>'done','status' => 200]);
                 }

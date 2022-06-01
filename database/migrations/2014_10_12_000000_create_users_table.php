@@ -24,6 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->integer('pin_code')->nullable();
+            $table->integer('sold_consumed')->nullable();
+            $table->integer('sold')->nullable();
+            $table->integer('sold_total')->nullable();
             $table->string('job_title')->nullable();
             $table->string('address')->nullable();
             $table->integer('time_zone_id')->nullable();
