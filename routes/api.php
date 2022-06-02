@@ -192,7 +192,7 @@ Route::get('/user', [ProfileController::class, 'show']);
 
 // Route::put('/user/{id}/update', [AuthController::class, 'update']);
 
-
+Route::post('/imageProfil', [UserController::class, 'uploadimage']);
 // Search
 Route::get('/search', [SearchController::class, 'search']);
 // Messages
