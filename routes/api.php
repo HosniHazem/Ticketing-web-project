@@ -37,9 +37,10 @@ use App\Http\Controllers\TicketAttachementsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//Route::middleware(['auth','isAdmin'])->group(function() {
-    Route::post('/forget', [RestPassword::class, 'forgetpassword']);
-    Route::post('/reset', [RestPassword::class, 'resetPassword']);
+// Route::middleware(['jwt.verify','isAdmin'])->group(function() {
+    Route::group(['middleware'=>'api'],function(){
+
+        ///Ticket
     Route::get('Tickets/{id}/show', [TicketController::class,'show']);
     Route::get('Tickets', [TicketController::class,'index']);
     Route::get('priority', [TicketController::class,'priority']);
@@ -47,7 +48,7 @@ use App\Http\Controllers\TicketAttachementsController;
     Route::delete('Tickets/{id}/delete', [TicketController::class,'destroy']);
     Route::put('Tickets/{id}/update', [TicketController::class,'update']);
     Route::post('Tickets/create',[TicketController::class,'store']);
-//});
+
 ///Category:
 Route::get('Category/{id}/show', [CategoryController::class,'show']);
     Route::get('Category', [CategoryController::class,'index']);
@@ -199,17 +200,19 @@ Route::get('/search', [SearchController::class, 'search']);
 Route::post('messages', [ChatController::class, 'message']);
 
 
-///// JWT auth
-Route::post('login', [JWTController::class,'login']);
-Route::post('register', [JWTController::class,'register']);
 
-Route::group(['middleware'=>'api'],function(){
+
+
     Route::post('logout', [JWTController::class,'logout']);
     Route::post('refresh', [JWTController::class,'refresh']);
     Route::post('me', [JWTController::class,'me']);
 });
-//enna
-
+// });
+///// JWT auth
+Route::post('login', [JWTController::class,'login']);
+Route::post('register', [JWTController::class,'register']);
+Route::post('/forget', [RestPassword::class, 'forgetpassword']);
+Route::post('/reset', [RestPassword::class, 'resetPassword']);
 /*// Sanctum auth
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);

@@ -177,6 +177,8 @@ class TicketController extends Controller
         $item->LevelID=$req->LevelID;
         $item->DueDate=$req->DueDate;
         $item->SolutionDescription=$req->SolutionDescription;
+        $item->TicketClose=$req->TicketClose;
+
 
 
         $item->save();
@@ -208,6 +210,8 @@ class TicketController extends Controller
             $item->LevelID=$req->LevelID;
             $item->DueDate=$req->DueDate;
             $item->SolutionDescription=$req->SolutionDescription;
+            $item->TicketClose=$req->TicketClose;
+            $item->Organization=$req->Organization;
 
             $item->update();
         return response()->json(['message'=>'done','status' => 200], 200);

@@ -13,28 +13,6 @@ class Ticket extends Model
     protected $with =['priority','levels','status','request_types','category','users','sub_category'];
 
 
-    protected $fillable = [
-        'Subject',
-        'Description',
-        'PriorityID',
-        'CreatedUser',
-        'UpdatedUser',
-        'AssignedUser',
-        'AssignedDate',
-        'SolutionDescription',
-        'TicketAttachment',
-        'IPAddress',
-        'ClosedDate',
-        'StatusCloseReason',
-        'Is_FCR',
-        'DueDate',
-        'IPAddress',
-        'Is_Active',
-        'TicketStatusMessage',
-        'EstimatedTime',
-        'EstimatedDate',
-        'Is_Validate_EstimatedTime',
-    ];
     use HasFactory;
 
     /*'RequestTypeID','StatusID','PriorityID','UrgentID','CategoryID','SubCategoryID','ItemID','ImpactID','DepartmentID','LevelID','LocationID','TicketModeID','CreatedUser','UpdatedUser','CreatedDate','UpdatedDate','RequestedUser','AssignedUser','AssignedDate','DueDate','SolutionDescription','IPAddress','ClosedDate','TicketCloseModelID','StatusCloseReason','Is_FCR','Is_Active','TicketStatusMessage','EstimatedTime','SpentTime','Is_Validate_EstimatedTime'*/

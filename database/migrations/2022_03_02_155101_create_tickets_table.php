@@ -48,7 +48,7 @@ class CreateTicketsTable extends Migration
             $table->datetime("DueDate");
             $table->String("SolutionDescription");
             $table->String("attach")->nullable();
-            $table->integer("IPAddress")->nullable();
+            $table->integer("TicketClose")->nullable();
             $table->datetime("ClosedDate")->nullable();
             $table->integer('TicketCloseModelID')->unsigned()->nullable();
             $table->foreign('TicketCloseModelID')->references('id')->on('ticket_close_models')->onDelete('cascade')->onUpdate('cascade')->nullable();
@@ -56,8 +56,9 @@ class CreateTicketsTable extends Migration
             $table->String("Is_FCR")->nullable();
             $table->String("Is_Active")->nullable();
             $table->String("TicketStatusMessage")->nullable();
-            $table->String("EstimatedTime");
-            $table->String("EstimatedDate");
+            $table->String("EstimatedTime")->nullable();
+            $table->String("Organization")->nullable();
+            $table->String("EstimatedDate")->nullable();
             $table->datetime("SpentTime")->nullable();
             $table->boolean("Is_Validate_EstimatedTime")->nullable();
             $table->timestamps();
