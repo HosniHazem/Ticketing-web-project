@@ -178,7 +178,11 @@ class TicketController extends Controller
         $item->DueDate=$req->DueDate;
         $item->SolutionDescription=$req->SolutionDescription;
         $item->TicketClose=$req->TicketClose;
-
+        $item->Organization=$req->Organization;
+        $item->SpentTime=$req->SpentTime;
+        $item->StatusCloseReason=$req->StatusCloseReason;
+        $item->ClosedDate=$req->ClosedDate;
+        $item->rate=$req->rate;
 
 
         $item->save();
@@ -212,6 +216,10 @@ class TicketController extends Controller
             $item->SolutionDescription=$req->SolutionDescription;
             $item->TicketClose=$req->TicketClose;
             $item->Organization=$req->Organization;
+            $item->SpentTime=$req->SpentTime;
+            $item->StatusCloseReason=$req->StatusCloseReason;
+            $item->ClosedDate=$req->ClosedDate;
+            $item->rate=$req->rate;
 
             $item->update();
         return response()->json(['message'=>'done','status' => 200], 200);

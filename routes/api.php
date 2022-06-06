@@ -37,7 +37,7 @@ use App\Http\Controllers\TicketAttachementsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// Route::middleware(['jwt.verify','isAdmin'])->group(function() {
+Route::middleware(['jwt.verify'])->group(function() {
     Route::group(['middleware'=>'api'],function(){
 
         ///Ticket
@@ -202,12 +202,13 @@ Route::post('messages', [ChatController::class, 'message']);
 
 
 
-
+Route::post('refresh', [JWTController::class,'refresh']);
     Route::post('logout', [JWTController::class,'logout']);
-    Route::post('refresh', [JWTController::class,'refresh']);
+
     Route::post('me', [JWTController::class,'me']);
 });
-// });
+});
+
 ///// JWT auth
 Route::post('login', [JWTController::class,'login']);
 Route::post('register', [JWTController::class,'register']);

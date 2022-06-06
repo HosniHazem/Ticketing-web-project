@@ -74,6 +74,7 @@ class JWTController extends Controller
      */
     public function refresh()
     {
+
         return $this->respondWithToken(auth()->refresh());
     }
 
@@ -93,5 +94,5 @@ class JWTController extends Controller
             'user' => auth()->user()
         ]);
     }
-    
+
 }
