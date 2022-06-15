@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 use App\Models\TicketCloseModel;
 use App\Models\TicketAttachements;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
 class TicketController extends Controller
 {
 
@@ -155,42 +155,104 @@ class TicketController extends Controller
 
     public function store(Request $req)
     {
+        $validator = Validator::make($req->all(), [
+            'Subject' => 'required',
+            'Description' => 'required',
+            'RequestTypeID' => 'required',
+            'PriorityID' => 'required',
+            'CategoryID' => 'required',
+            'SubCategoryID' => 'required',
+            'RequestedUser' => 'required',
+            'DueDate' => 'required',
+            'Organization' => 'required',
+            'Username' => 'required',
 
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =new Ticket();
         $item->Subject=$req->Subject;
         $item->Description=$req->Description;
         $item->RequestTypeID=$req->RequestTypeID;
-        $item->EstimatedTime=$req->EstimatedTime;
-        $item->EstimatedDate=$req->EstimatedDate;
-        $item->StatusID=$req->StatusID;
         $item->PriorityID=$req->PriorityID;
-        $item->UrgentID=$req->UrgentID;
         $item->CategoryID=$req->CategoryID;
         $item->SubCategoryID=$req->SubCategoryID;
-        $item->CreatedUser=$req->CreatedUser;
-        $item->UpdatedUser=$req->UpdatedUser;
         $item->RequestedUser=$req->RequestedUser;
-        $item->AssignedUser=$req->AssignedUser;
-        $item->AssignedDate=$req->AssignedDate;
         $item->attach=$req->attach;
-        $item->AssignedUser=$req->AssignedUser;
-        $item->LevelID=$req->LevelID;
         $item->DueDate=$req->DueDate;
-        $item->SolutionDescription=$req->SolutionDescription;
-        $item->TicketClose=$req->TicketClose;
         $item->Organization=$req->Organization;
-        $item->SpentTime=$req->SpentTime;
-        $item->StatusCloseReason=$req->StatusCloseReason;
-        $item->ClosedDate=$req->ClosedDate;
-        $item->rate=$req->rate;
+        $item->Username=$req->Username;
 
 
         $item->save();
         return response()->json(['message'=>'done','status' => 200], 200);
-    }
+    }}
+    public function updateclient(Request $req,$id)
+    {
+        $validator = Validator::make($req->all(), [
+            'Subject' => 'required',
+            'Description' => 'required',
+            'RequestTypeID' => 'required',
+            'PriorityID' => 'required',
+            'CategoryID' => 'required',
+            'SubCategoryID' => 'required',
+            'RequestedUser' => 'required',
+            'DueDate' => 'required',
+            'Organization' => 'required',
+            'Username' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
+        $item =Ticket::find($id);
+        if($item){
+            $item->Subject=$req->Subject;
+            $item->Description=$req->Description;
+            $item->RequestTypeID=$req->RequestTypeID;
+            $item->PriorityID=$req->PriorityID;
+            $item->CategoryID=$req->CategoryID;
+            $item->SubCategoryID=$req->SubCategoryID;
+            $item->RequestedUser=$req->RequestedUser;
+            $item->attach=$req->attach;
+            $item->DueDate=$req->DueDate;
+            $item->Organization=$req->Organization;
+            $item->Username=$req->Username;
+            $item->update();
+        return response()->json(['message'=>'done','status' => 200], 200);
+                }
+                else
+                {
+                return response()->json(['message'=>'not done','status' => 404], 404);
+                }
+    }}
     public function update(Request $req,$id)
     {
+        $validator = Validator::make($req->all(), [
 
+            'EstimatedTime'=>'required',
+            'EstimatedDate'=>'required',
+            'StatusID'=>'required',
+            'AssignedUser'=>'required',
+            'LevelID'=>'required',
+            'SolutionDescription'=>'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
         $item =Ticket::find($id);
         if($item){
 
@@ -200,11 +262,8 @@ class TicketController extends Controller
             $item->EstimatedTime=$req->EstimatedTime;
             $item->EstimatedDate=$req->EstimatedDate;
             $item->StatusID=$req->StatusID;
-            $item->UrgentID=$req->UrgentID;
             $item->CategoryID=$req->CategoryID;
             $item->SubCategoryID=$req->SubCategoryID;
-            $item->CreatedUser=$req->CreatedUser;
-            $item->UpdatedUser=$req->UpdatedUser;
             $item->RequestedUser=$req->RequestedUser;
             $item->AssignedUser=$req->AssignedUser;
             $item->AssignedDate=$req->AssignedDate;
@@ -220,7 +279,7 @@ class TicketController extends Controller
             $item->StatusCloseReason=$req->StatusCloseReason;
             $item->ClosedDate=$req->ClosedDate;
             $item->rate=$req->rate;
-
+            $item->Username=$req->Username;
             $item->update();
         return response()->json(['message'=>'done','status' => 200], 200);
                 }
@@ -228,7 +287,56 @@ class TicketController extends Controller
                 {
                 return response()->json(['message'=>'not done','status' => 404], 404);
                 }
-    }
+    }}
+    public function updatepick(Request $req,$id)
+    {
+        $validator = Validator::make($req->all(), [
+
+            'AssignedUser'=>'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'validate_err' => $validator->getMessageBag(),
+            ]);
+        } else {
+        $item =Ticket::find($id);
+        if($item){
+
+            $item->Subject=$req->Subject;
+            $item->Description=$req->Description;
+            $item->RequestTypeID=$req->RequestTypeID;
+            $item->EstimatedTime=$req->EstimatedTime;
+            $item->EstimatedDate=$req->EstimatedDate;
+            $item->StatusID=$req->StatusID;
+            $item->CategoryID=$req->CategoryID;
+            $item->SubCategoryID=$req->SubCategoryID;
+            $item->RequestedUser=$req->RequestedUser;
+            $item->AssignedUser=$req->AssignedUser;
+            $item->AssignedDate=$req->AssignedDate;
+            $item->attach=$req->attach;
+            $item->AssignedUser=$req->AssignedUser;
+            $item->PriorityID=$req->PriorityID;
+            $item->LevelID=$req->LevelID;
+            $item->DueDate=$req->DueDate;
+            $item->SolutionDescription=$req->SolutionDescription;
+            $item->TicketClose=$req->TicketClose;
+            $item->Organization=$req->Organization;
+            $item->SpentTime=$req->SpentTime;
+            $item->StatusCloseReason=$req->StatusCloseReason;
+            $item->ClosedDate=$req->ClosedDate;
+            $item->rate=$req->rate;
+            $item->Username=$req->Username;
+            $item->update();
+        return response()->json(['message'=>'done','status' => 200], 200);
+                }
+                else
+                {
+                return response()->json(['message'=>'not done','status' => 404], 404);
+                }
+    }}
     public function destroy($id)
     {
 

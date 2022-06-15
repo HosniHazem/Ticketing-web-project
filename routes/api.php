@@ -47,6 +47,8 @@ Route::middleware(['jwt.verify'])->group(function() {
 
     Route::delete('Tickets/{id}/delete', [TicketController::class,'destroy']);
     Route::put('Tickets/{id}/update', [TicketController::class,'update']);
+    Route::put('TicketsClient/{id}/update', [TicketController::class,'updateclient']);
+    Route::put('TicketsPick/{id}/update', [TicketController::class,'updatepick']);
     Route::post('Tickets/create',[TicketController::class,'store']);
 
 ///Category:
