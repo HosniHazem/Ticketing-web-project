@@ -5,27 +5,12 @@ use App\Http\Controllers\RestPassword;
 use App\Http\Controllers\JWTController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ItemsController;
-use App\Http\Controllers\ImpactController;
-use App\Http\Controllers\LevelsController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\StatusController;
-use App\Http\Controllers\TicketController;
+
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UrgencyController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentsController;
-use App\Http\Controllers\PriorityController;
-use App\Http\Controllers\LocationsController;
-use App\Http\Controllers\RequestTypeController;
-use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\TicketModelController;
-use App\Http\Controllers\DepartementsController;
+
 use App\Http\Controllers\Sanctum\AuthController;
 use App\Http\Controllers\RolePermissionController;
-use App\Http\Controllers\CategoryMembersController;
-use App\Http\Controllers\TicketCloseModelController;
-use App\Http\Controllers\TicketAttachementsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +55,6 @@ Route::get('/user', [ProfileController::class, 'show']);
 
 Route::post('/imageProfil', [UserController::class, 'uploadimage']);
 // Search
-Route::get('/search', [SearchController::class, 'search']);
 // Messages
 
 
